@@ -51,7 +51,7 @@
             </div>
 
             <div>
-              <button class="btn btn-success" type="submit" style="width:10vw;border-radius:25px;background-color:rgba(54, 61, 32, 1);margin-top:3vh;height:5vh;">
+              <button class="btn btn-success" type="submit" style="width:10vw;border-radius:25px;background-color:rgba(54, 61, 32, 1);margin-top:3vh;height:5vh;font-size:1vw;">
                 <strong>Login</strong>
               </button>
             </div>

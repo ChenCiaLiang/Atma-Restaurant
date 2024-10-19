@@ -14,3 +14,18 @@ Route::get('sign-up', function () {
 Route::get('login', function () {
     return view('login');
 });
+
+
+Route::get('profile', function () {
+    return view('profile');
+});
+
+Route::get('edit', function () {
+    return view('edit');
+});
+
+Route::get('menu', function () {
+    return view('menu');
+});
+
+

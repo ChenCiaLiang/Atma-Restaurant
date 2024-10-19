@@ -33,7 +33,22 @@
       margin-bottom: 1rem;
     }
 
-    
+    .grid-container {
+      display: grid;
+      height: 15vh;
+      align-content: center;
+      grid-template-columns: auto auto auto;
+      gap: 0px;
+      background-color: rgba(113, 120, 67, 1);
+      padding: 0px;
+    }
+
+    .grid-container > div{
+      background-color: rgba(113, 120, 67, 1);
+      text-align: center;
+      padding: 20px 0;
+      font-size: 1vw;
+    }
   </style>
 </head>
 <body>
@@ -125,6 +140,24 @@
       </div>
     </div>
   </div>
+
+
+  <div class="grid-container" style="color:white;">
+    <div>Atma Restaurant, UAJY</div>
+    <div><p>Jl.Babarsari, Atma Jaya Yogyakarta, 93401, IND</p></div>
+    <div><p>+623456789</p></div>  
+    <div></div>
+    <div><p>Copyright © 2024 Atma Restaurant <br>All rights reserved</p></div>
+    <div></div>
+    <div></div>
+    <div>FOLLOW US ON SOCIAL</div>
+    <div></div>
+    <div></div>
+    <div><a class="bi bi-instagram" style="color:white;cursor:pointer;"></a></div>
+    <div></div>
+  </div>
+
+
 
 
 
