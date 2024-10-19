@@ -39,12 +39,12 @@
       align-content: center;
       grid-template-columns: auto auto auto;
       gap: 0px;
-      background-color: rgba(113, 120, 67, 1);
+      background-color: rgba(247, 132, 5, 1);
       padding: 0px;
     }
 
     .grid-container > div {
-      background-color: rgba(113, 120, 67, 1);
+      background-color: rgba(247, 132, 5, 1);
       text-align: center;
       padding: 20px 0;
       font-size: 1vw;
@@ -54,7 +54,7 @@
 <body>
 
 <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #687641;">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(237, 120, 4, 1);">
     <div class="container-fluid">
       <a class="navbar-brand" href="#" style="font-family: Italianno; font-size: 2rem; color: white;">Atma Restaurant</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +63,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" style="color: white;text-decoration:underline;text-underline-offset:10px;" href="#"><strong>Home</strong></a>
+            <a class="nav-link active" style="color: white;text-decoration:underline;text-underline-offset:15px;" href="#"><strong>Home</strong></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" style="color: white;" href="#"><strong>Reserve</strong></a>
@@ -92,14 +92,14 @@
     </div>
   </div>
   
-  <div class="hero-section" style="background-image: url('image/homepage-2.png');background-repeat:no-repeat;">
+  <div class="hero-section" style="background-image: url('image/homepage2-2.png');background-repeat:no-repeat;">
     <div class="content" style="width:100%;border-radius:0px;text-align:left;display:flex;justify-content:end;">
       <h1 style="margin-right:15vw;margin-top:8vh;font-size:4vw"><strong>With Best <br>Herbs,<br> We Deliver <br>Your Food <br>With Love.</strong></h1>
 
     </div>
   </div>
 
-  <div class="container-fluid" style="background-color: rgba(171, 171, 128, 1);width:100%;height:100%;padding-top:15rem;padding-bottom:15rem;">
+  <div class="container-fluid" style="background-color: rgba(247, 132, 5, 0.5);width:100%;height:100%;padding-top:15rem;padding-bottom:15rem;">
     <h1 style="text-align:center;color:white">What Our Customer <br> Says About Us</h1>
     <div class="row g-3"style="justify-content:center;align-items:center;padding-top:5rem;">
       <div class="col-12 col-sm-6 col-md-2"  style="margin: 0 1rem;">

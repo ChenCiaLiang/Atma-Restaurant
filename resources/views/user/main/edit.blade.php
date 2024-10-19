@@ -32,8 +32,8 @@
     }
   </style>
 </head>
-<body style="background-color:rgba(171, 171, 128, 1);"> 
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #687641;">
+<body style="background-color:#F0DAA1;"> 
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #F78405;">
     <div class="container-fluid">
       <a class="navbar-brand" href="#" style="font-family: Italianno; font-size: 2rem; color: white;">Atma Restaurant</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,13 +42,13 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" style="color: white" href="#"><strong>Home</strong></a>
+            <a class="nav-link active" style="color: white" href="{{url('/')}}"><strong>Home</strong></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: white;" href="#"><strong>Reserve</strong></a>
+            <a class="nav-link" style="color: white;" href="{{url('reservasi')}}"><strong>Reserve</strong></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: white;" href="#"><strong>Menu</strong></a>
+            <a class="nav-link" style="color: white;" href="{{url('menu')}}"><strong>Menu</strong></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" style="color: white;" href="#" ><i class="bi bi-person-circle"  style="border-bottom:1px;"></i></a>
@@ -60,7 +60,7 @@
 
   <div class="grid-container justify-content-center align-content-center" >
       <div class="item1">
-        <div class="card align-items-center" style="padding:5vh;border-radius:25px;background-color:rgba(171, 171, 128, 1);color:white;border:none;">
+        <div class="card align-items-center" style="padding:5vh;border-radius:25px;background-color:#F0DAA1;color:white;border:none;">
           <h1 class="card-title">Edit Profile</h1>
           <img src="{{asset('image/shin.png')}}" class="rounded circle" style="width:15vw;height:30vh;" alt="...">
           <div class="card-body text-start">

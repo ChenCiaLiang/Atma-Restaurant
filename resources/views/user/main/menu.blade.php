@@ -13,12 +13,12 @@
     .grid-container {
       display: grid;
       grid-template-columns: auto auto auto;
-      background-color: rgba(171, 171, 128, 1);
+      background-color: rgba(240, 218, 161, 1);
       padding: 5%;
       gap:5%;
     }
     .grid-item {
-      background-color: rgba(171, 171, 128, 1);
+      background-color: rgba(240, 218, 161, 1);
       text-align: center;
       border-radius:25px;
     }
@@ -37,7 +37,10 @@
       border-top-left-radius:25px;
       border-top-right-radius:25px;
     }
+    .card{
 
+      border:none;
+    }
     img{
       display:block;
     }
@@ -55,8 +58,8 @@
     
   </style>
 </head>
-<body style="background-color:rgba(171, 171, 128, 1)">
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #687641;">
+<body style="background-color:rgba(240, 218, 161, 1)">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(247, 132, 5, 1);">
     <div class="container-fluid">
       <a class="navbar-brand" href="#" style="font-family: Italianno; font-size: 2rem; color: white;">Atma Restaurant</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,14 +71,20 @@
             <a class="nav-link active" style="color: white" href="{{url('/')}}"><strong>Home</strong></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: white;" href="#"><strong>Reserve</strong></a>
+            <a class="nav-link" style="color: white;" href="{{url('reservasi')}}"><strong>Reserve</strong></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" style="color: white;text-decoration:underline; text-underline-offset:5px;" href="#" ><strong>Menu</strong></a>
+            <a class="nav-link" style="color: white;text-decoration:underline; text-underline-offset:15px;" href="#" ><strong>Menu</strong></a>
           </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" style="color: white;" href="{{url('profile')}}" ><i class="bi bi-person-circle"  style="border-bottom:1px;"></i></a>
+          </li>
+
           <li class="nav-item">
             <a class="nav-link bi bi-cart-fill" style="color: white;" href="#" ></a>
           </li>
+
         </ul>
       </div>
     </div>
@@ -93,15 +102,15 @@
     </form>
 
     <ul class="list-group list-group-horizontal mt-3" style="margin-left:2vw;border:none;background-color:none;color:">
-      <li class="list-group-item" style="border:none;background-color:rgba(171, 171, 128, 1);color:white;text-decoration:underline;text-underline-offset:5px;"><strong>All</strong></li>
-      <li class="list-group-item" style="border:none;background-color:rgba(171, 171, 128, 1);color:white;"><strong>Rice</strong></li>
-      <li class="list-group-item" style="border:none;background-color:rgba(171, 171, 128, 1);color:white;"><strong>Noodle</strong></li>
-      <li class="list-group-item" style="border:none;background-color:rgba(171, 171, 128, 1);color:white;"><strong>Drinks</strong></li>
+      <li class="list-group-item" style="border:none;background-color:rgba(240, 218, 161, 1);color:white;text-decoration:underline;text-underline-offset:5px;"><strong>All</strong></li>
+      <li class="list-group-item" style="border:none;background-color:rgba(240, 218, 161, 1);color:white;"><strong>Rice</strong></li>
+      <li class="list-group-item" style="border:none;background-color:rgba(240, 218, 161, 1);color:white;"><strong>Noodle</strong></li>
+      <li class="list-group-item" style="border:none;background-color:rgba(240, 218, 161, 1);color:white;"><strong>Drinks</strong></li>
     </ul>
 
     <div class="grid-container">
       <div class="grid-item">
-        <div class="card" >
+        <div class="card "  >
           <img src="{{asset('image/nasgor.png')}}" class="card-img-top" alt="...">
           <div class="card-body">
             <h5 class="card-title">Nasi Goreng</h5>
@@ -110,7 +119,7 @@
               <button class="btn-decrement" style="border:none;background-color:white;">
                 <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
               </button>
-              <span class="quantity mx-2" style="font-size:1.5vw;">1</span>
+              <span class="quantity mx-2" style="font-size:1.5vw;">0</span>
               <button class="btn-increment" style="border:none;background-color:white;">
                 <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
               </button>
@@ -129,7 +138,7 @@
               <button class="btn-decrement" style="border:none;background-color:white;">
                 <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
               </button>
-              <span class="quantity mx-2" style="font-size:1.5vw;">1</span>
+              <span class="quantity mx-2" style="font-size:1.5vw;">0</span>
               <button class="btn-increment" style="border:none;background-color:white;">
                 <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
               </button>
@@ -148,7 +157,7 @@
               <button class="btn-decrement" style="border:none;background-color:white;">
                 <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
               </button>
-              <span class="quantity mx-2" style="font-size:1.5vw;">1</span>
+              <span class="quantity mx-2" style="font-size:1.5vw;">0</span>
               <button class="btn-increment" style="border:none;background-color:white;">
                 <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
               </button>
@@ -167,7 +176,7 @@
               <button class="btn-decrement" style="border:none;background-color:white;">
                 <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
               </button>
-              <span class="quantity mx-2" style="font-size:1.5vw;">1</span>
+              <span class="quantity mx-2" style="font-size:1.5vw;">0</span>
               <button class="btn-increment" style="border:none;background-color:white;">
                 <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
               </button>
@@ -186,7 +195,7 @@
               <button class="btn-decrement" style="border:none;background-color:white;">
                 <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
               </button>
-              <span class="quantity mx-2" style="font-size:1.5vw;">1</span>
+              <span class="quantity mx-2" style="font-size:1.5vw;">0</span>
               <button class="btn-increment" style="border:none;background-color:white;">
                 <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
               </button>
@@ -205,71 +214,14 @@
               <button class="btn-decrement" style="border:none;background-color:white;">
                 <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
               </button>
-              <span class="quantity mx-2" style="font-size:1.5vw;">1</span>
+              <span class="quantity mx-2" style="font-size:1.5vw;">0</span>
               <button class="btn-increment" style="border:none;background-color:white;">
                 <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
               </button>
             </div>
           </div>
         </div>
-      </div>  
-
-      <div class="grid-item">
-        <div class="card" >
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <div class="quantity-control d-flex align-items-center justify-content-center">
-              <button class="btn-decrement" style="border:none;background-color:white;">
-                <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
-              </button>
-              <span class="quantity mx-2" style="font-size:1.5vw;">1</span>
-              <button class="btn-increment" style="border:none;background-color:white;">
-                <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid-item">
-        <div class="card" >
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <div class="quantity-control d-flex align-items-center justify-content-center">
-              <button class="btn-decrement" style="border:none;background-color:white;">
-                <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
-              </button>
-              <span class="quantity mx-2" style="font-size:1.5vw;">1</span>
-              <button class="btn-increment" style="border:none;background-color:white;">
-                <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="grid-item">
-        <div class="card" >
-          <img src="..." class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <div class="quantity-control d-flex align-items-center justify-content-center">
-              <button class="btn-decrement" style="border:none;background-color:white;">
-                <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
-              </button>
-              <span class="quantity mx-2" style="font-size:1.5vw;">1</span>
-              <button class="btn-increment" style="border:none;background-color:white;">
-                <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>  
+      </div>   
   </div>
 
 
@@ -296,7 +248,7 @@
       button.addEventListener('click', function() {
         const quantitySpan = this.parentElement.querySelector('.quantity');
         let quantity = parseInt(quantitySpan.textContent);
-        if (quantity > 1) {
+        if (quantity > 0) {
           quantity--;
           quantitySpan.textContent = quantity;
         }
