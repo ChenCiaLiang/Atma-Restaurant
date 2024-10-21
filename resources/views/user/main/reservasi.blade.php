@@ -28,7 +28,7 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse text-center" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link active" style="color: white;"
@@ -98,7 +98,7 @@
     </div>
 
     <!-- Main Footer -->
-    <footer class="main-footer text-center" style="background-color: #F78405; color: #ffffff">
+    <footer class="main-footer text-center" style="background-color: #F78405; color: #ffffff;margin-top:10%">
         <div class="row">
             <div class="col text-start ms-4">
                 <h1>Atma Restaurant</h1>

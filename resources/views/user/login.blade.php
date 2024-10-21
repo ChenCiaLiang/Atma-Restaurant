@@ -35,6 +35,7 @@
 
 <body>
     <div class="d-flex justify-content-start" style="background-color:rgba(240, 218, 161, 1);">
+       
         <img src="{{ asset('image/signup.png') }}" alt="" style="width:50%;">
         <div class="d-flex justify-content-end">
             <div class="container" style="margin-top:15vh;margin-left:1vw;">
@@ -42,14 +43,14 @@
                 <h5 style="color:white;opacity:0.5;">Silahkan Masuk Disini</h5>
                 <form action="{{ url('menu') }}">
                     <p style="padding-left:1vw;margin:0;"><strong>Username</strong></p>
-                    <div class="form-floating mb-2">
+                    <div class="form-floating mb-2 d-flex" >
                         <input type="text" class="form-control" id="floatingInput" placeholder="Username"
                             style="border-radius:50px;width:30vw;padding-left:2vw;" required>
                         <label for="floatingInput" style="padding-left:2vw;">Username</label>
                     </div>
 
                     <p style="padding-left:1vw;margin:0;margin-top:2vh;"><strong>Password</strong></p>
-                    <div class="form-floating mb-2">
+                    <div class="form-floating mb-2 d-flex">
                         <input type="password" class="form-control" id="pwd" placeholder="Password"
                             style="border-radius:50px;width:30vw;padding-left:2vw;" required>
                         <label for="pwd" style="padding-left:2vw;">Password</label>

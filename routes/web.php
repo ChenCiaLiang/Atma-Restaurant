@@ -35,6 +35,14 @@ Route::get('pembayaran', function () {
     return view('/user/main/pembayaran');
 });
 
+Route::get('qris', function () {
+    return view('/user/main/qris');
+});
+
+Route::get('virtual', function () {
+    return view('/user/main/virtual');
+});
+
 Route::get('admin_dashboard', function () {
     return view('Admin.admin_dashboard');
 });

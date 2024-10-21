@@ -136,7 +136,7 @@
     </div>
 
     <!-- Main Footer -->
-    <footer class="main-footer text-center" style="background-color: #F78405; color: #ffffff">
+    <footer class="main-footer text-center" style="background-color: #F78405; color: #ffffff;margin-top:10%">
         <div class="row">
             <div class="col text-start ms-4">
                 <h1>Atma Restaurant</h1>

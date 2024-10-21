@@ -63,7 +63,7 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse text-center" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link active" style="color: white"
@@ -97,12 +97,11 @@
     </div>
     <div class="container" style="padding:2px;">
         <div class="grid-container">
-            <div style="padding:5px;">
+            <div style="padding:3%;">
                 <div class="row align-items-center">
                     <p class="col text-start" style="font-size:1.5vw;"><strong>Your Order</strong></p>
                     <p class="col text-end" style="font-size:1.5vw;margin-right:1.5vw;"><strong>Remove All</strong></p>
                 </div>
-                <div class="container">
                     <div class="card mb-3" style="width:30vw;height:15vh;">
                         <div class="row g-0">
                             <div class="col">
@@ -147,12 +146,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
+               
             </div>
 
-            <div style="padding:5px;">
+            <div style="padding:3%;">
                 <p style="text-align:center;font-size:1.5vw;"><strong>Meja No.14</strong></p>
-                <div class="container">
+                
                     <div class="card" style="width: 30vw;">
                         <div class="card-body">
                             <h5 class="card-title text-start"><strong>Pesanan</strong></h5>
@@ -190,7 +189,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -203,16 +202,22 @@
             </div>
 
             <div class="col" style="margin-left:42%;">
-                <button
-                    style="width:8vw;height:5vh;border-radius:25px;margin-right:3%;background-color:#F78405;color:white;font-size:0.8vw;">QRIS</button>
-                <button
-                    style="width:8vw;height:5vh;border-radius:25px;background-color:#F78405;color:white;font-size:0.8vw;">Virtual
-                    Account</button>
+                <a href="{{url('qris')}}">
+                    <button
+                        style="width:8vw;height:5vh;border-radius:25px;margin-right:3%;background-color:#F78405;color:white;font-size:0.8vw;">QRIS
+                    </button>
+                </a>
+                <a href="{{url('virtual')}}">
+                    <button
+                        style="width:8vw;height:5vh;border-radius:25px;background-color:#F78405;color:white;font-size:0.8vw;">Virtual Account
+                    </button>
+                </a>
             </div>
         </div>
     </div>
+
     <!-- Main Footer -->
-    <footer class="main-footer text-center" style="background-color: #F78405; color: #ffffff">
+    <footer class="main-footer text-center" style="background-color: #F78405; color: #ffffff;margin-top:10%">
         <div class="row">
             <div class="col text-start ms-4">
                 <h1>Atma Restaurant</h1>

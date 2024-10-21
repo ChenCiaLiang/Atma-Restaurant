@@ -81,7 +81,7 @@
 
                     <div style="display:flex;justify-content:center;align-items:center;">
                         <button class="btn btn-success" type="submit"
-                            style="width:10vw;border-radius:25px;background-color:rgba(54, 61, 32, 1);margin-top:1vh;background-color:rgba(247, 132, 5, 1);border:none;">
+                            style="width:10vw;border-radius:25px;background-color:rgba(54, 61, 32, 1);margin-top:1vh;background-color:rgba(247, 132, 5, 1);border:none;font-size:1vw;">
                             <strong>Register</strong>
                         </button>
                     </div>

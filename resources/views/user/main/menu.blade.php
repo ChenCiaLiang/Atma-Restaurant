@@ -196,9 +196,8 @@
                 <div class="card">
                     <img src="{{ asset('image/ramen.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                        <h5 class="card-title">Sauted Pork Ramen</h5>
+                        <p class="card-text">Rp70.000</p>
                         <div class="quantity-control d-flex align-items-center justify-content-center">
                             <button class="btn-decrement" style="border:none;background-color:white;">
                                 <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
@@ -216,9 +215,8 @@
                 <div class="card">
                     <img src="{{ asset('image/japchae.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                        <h5 class="card-title">Japchae</h5>
+                        <p class="card-text">Rp.85.000</p>
                         <div class="quantity-control d-flex align-items-center justify-content-center">
                             <button class="btn-decrement" style="border:none;background-color:white;">
                                 <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
@@ -236,9 +234,8 @@
                 <div class="card">
                     <img src="{{ asset('image/mieayam.png') }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of
-                            the card's content.</p>
+                        <h5 class="card-title">Mie Ayam</h5>
+                        <p class="card-text">Rp50.000</p>
                         <div class="quantity-control d-flex align-items-center justify-content-center">
                             <button class="btn-decrement" style="border:none;background-color:white;">
                                 <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
