@@ -17,7 +17,7 @@
     </style>
 
     <main class="p-3">
-        <div class="container-fluid p-4" id="mainContent">
+        <div class="container-fluid p-4 pt-0" id="mainContent">
             <!-- Recent User -->
             <div class="row mt-4">
                 <div class="col-12">
@@ -38,10 +38,12 @@
                                                 <p class="mb-0" style="color: black;">October 18 2024, 10:30 PM</p>
                                             </div>
                                             <div class="col d-flex justify-content-end align-items-center">
-                                                <button class="btn btn-success rounded-pill"
-                                                    style="color: black;">VIEW</button>
-                                                <button class="btn btn-danger rounded-pill mx-3"
-                                                    style="color: black;">DELETE</button>
+                                                <button class="btn btn-success rounded-pill" style="color: rgb(255, 255, 255);">
+                                                    VIEW
+                                                </button>
+                                                <button class="btn btn-danger rounded-pill mx-3" style="color: rgb(255, 255, 255);">
+                                                    DELETE
+                                                </button>
                                             </div>
                                         </div>
                                     </div>

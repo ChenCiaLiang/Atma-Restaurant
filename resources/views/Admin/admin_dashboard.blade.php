@@ -77,7 +77,7 @@
         }
 
         .sidebar-logo {
-            padding: 1.15rem 1.5rem;
+            padding: 1rem 1.5rem;
             text-align: center;
             background-color: #FA9C14;
         }

@@ -60,13 +60,20 @@
         .card-text {
             text-align: start;
         }
+        
+        .main-footer {
+            background-color: #f8f9fa;
+            border-top: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 
 <body style="background-color:rgba(240, 218, 161, 1)">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(247, 132, 5, 1);">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#" style="font-family: Italianno; font-size: 2rem; color: white;">Atma
+            <a class="navbar-brand" href="{{ url('/') }}" style="font-family: Italianno; font-size: 2rem; color: white;">Atma
                 Restaurant</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -93,7 +100,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link bi bi-cart-fill" style="color: white;" href="#"></a>
+                        <a class="nav-link bi bi-cart-fill" style="color: white;" href="{{ url('pembayaran') }}"></a>
                     </li>
 
                 </ul>
@@ -245,10 +252,46 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
+    <!-- Main Footer -->
+    <footer class="main-footer text-center" style="background-color: #F78405; color: #ffffff">
+        <div class="row">
+            <div class="col text-start ms-4">
+                <h1>Atma Restaurant</h1>
+                <p>Jl. Babasari, Atma Jaya Yogyakartya, 93401, IND</p>
+                <p>+623456789</p>
+            </div>
+            <div class="col d-flex flex-column align-items-center">
+                <div>
+                    <i class="fa-brands fa-instagram fs-2"></i>
+                    <span class="fs-4 fw-bold">AtmaRestaurant</span>
+                </div>
+                <div>
+                    <i class="fa-brands fa-square-facebook fs-2"></i>
+                    <span class="fs-4 fw-bold">AtmaRestaurantOfficial</span>
+                </div>
+                <div>
+                    <i class="fa-brands fa-twitter fs-2"></i>
+                    <span class="fs-4 fw-bold">@AtmaResOff</span>
+                </div>
+                <div>
+                    <i class="fa-brands fa-youtube fs-2"></i>
+                    <span class="fs-4 fw-bold">AtmaCook</span>
+                </div>
+            </div>
+            <div class="col text-end">
+                <p class="fs-4 fw-bold m-1">Help</p>
+                <p class="fs-4 fw-bold m-1">About Us</p>
+                <p class="fs-4 fw-bold m-1">Contact Us</p>
+                <p class="fs-4 fw-bold m-1">Terms & Conditions</p>
+            </div>
+        </div>
+        <hr class="footer-line">
+        <div class="container d-flex flex-column justify-content-center">
+            <p>Copyright © 2024 Atma Restaurant.</p>
+            <p>All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

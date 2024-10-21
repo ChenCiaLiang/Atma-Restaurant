@@ -8,6 +8,10 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <style>
         /* Style untuk menempatkan konten di tengah */
         .hero-section {
@@ -64,7 +68,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(237, 120, 4, 1);">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#" style="font-family: Italianno; font-size: 2rem; color: white;">Atma
+            <a class="navbar-brand" href="{{ url('/') }}" style="font-family: Italianno; font-size: 2rem; color: white;">Atma
                 Restaurant</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,13 +79,7 @@
                     <li class="nav-item">
                         <a class="nav-link active"
                             style="color: white;text-decoration:underline;text-underline-offset:15px;"
-                            href="#"><strong>Home</strong></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: white;" href="#"><strong>Reserve</strong></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: white;" href="#"><strong>Menu</strong></a>
+                            href="{{ url('/') }}"><strong>Home</strong></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" style="color: white;" href="{{ url('login') }}"><strong>Login</strong></a>
@@ -93,19 +91,21 @@
     <div class="hero-section" style="background-image: url('image/homepage.png');">
         <div class="content"
             style="background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      padding: 5rem;
-      max-width: 50vw;
-      padding-top:30vh;
-      text-align: left;
-      border-radius: 10px;">
+                color: white;
+                padding: 5rem;
+                max-width: 50vw;
+                padding-top:30vh;
+                text-align: left;
+                border-radius: 10px;">
             <h1><strong>Good Food,<br>Good Mood</strong></h1>
             <p style="font-size:1vw">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam ultricies erat at
                 nisi ultrices vehicula. Donec blandit risus orci, varius vestibulum felis sagittis ac. Vestibulum nec
                 vulputate odio, eget rhoncus ex. </p>
-            <button type="button" class="btn btn-light"
-                style="border-radius:3vw;font-size:2vw;padding-left:3vw;padding-right:3vw;margin-top:2vh"><strong>View
-                    Menu</strong></button>
+            <a href="{{ url('menu') }}">
+                <button type="button" class="btn btn-light"
+                    style="border-radius:3vw;font-size:2vw;padding-left:3vw;padding-right:3vw;margin-top:2vh"><strong>View
+                        Menu</strong></button>
+            </a>
         </div>
     </div>
 
@@ -208,13 +208,6 @@
             <p>All rights reserved.</p>
         </div>
     </footer>
-
-
-
-
-
-
-
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

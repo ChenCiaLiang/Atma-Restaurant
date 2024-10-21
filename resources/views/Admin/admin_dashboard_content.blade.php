@@ -8,7 +8,7 @@
     </style>
 
     <main class="p-3">
-        <div class="container-fluid p-4" id="mainContent">
+        <div class="container-fluid p-4 pt-0" id="mainContent">
             <div class="row">
                 <!-- Stats Cards -->
                 <div class="col-lg-3 col-md-6">
