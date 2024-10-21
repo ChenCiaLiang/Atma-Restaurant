@@ -190,9 +190,6 @@
                             <i class="fa-solid fa-align-left"></i>
                         </button>
                     </div>
-                    <div class="d-flex align-items-end">
-                        <i class="fa-solid fa-user"></i>
-                    </div>
                 </div>
             </nav>
             <div class="content-wrapper">
