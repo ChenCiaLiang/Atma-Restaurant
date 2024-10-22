@@ -43,6 +43,14 @@ Route::get('virtual', function () {
     return view('/user/main/virtual');
 });
 
+Route::get('pembayaranBerhasil', function () {
+    return view('Notif.pembayaranBerhasil');
+});
+
+Route::get('pemesananBerhasil', function () {
+    return view('Notif.pemesananBerhasil');
+});
+
 Route::get('admin_dashboard', function () {
     return view('Admin.admin_dashboard');
 });

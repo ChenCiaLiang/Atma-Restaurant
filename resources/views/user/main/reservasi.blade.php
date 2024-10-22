@@ -8,6 +8,10 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <style>
         .main-footer {
             background-color: #f8f9fa;
@@ -18,7 +22,7 @@
     </style>
 </head>
 
-<body style="background-color:#F0DAA1;color:white;">
+<body style="background-color:#F0DAA1;color:white;font-famiy:Inter;">
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(247, 132, 5, 1);">
         <div class="container-fluid">
@@ -60,11 +64,11 @@
 
     <div class="container " style="margin-top:5%;">
         <div style="text-align:center;">
-            <h2 style="display:inline-block; border-bottom: 2px dashed white;text-align;">Reservation</h2>
+            <h2 style="display:inline-block; border-bottom: 2px dashed black;text-align;font-family:Italianno;font-size:5vw;color:black;">Reservations</h2>
 
         </div>
 
-        <form action="{{ url('menu') }}">
+        <form action="{{ url('pemesananBerhasil') }}">
 
             <div class="form-group">
                 <label for="seat">Number of People</label>

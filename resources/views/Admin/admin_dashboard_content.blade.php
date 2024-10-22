@@ -15,7 +15,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Order</h5>
-                            <p class="card-text">+150 <br> Since last month</p>
+                            <p class="card-text" style="color:green;">+150 <br> Since last month</p>
                         </div>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Reservation</h5>
-                            <p class="card-text">+500 <br> Since last month</p>
+                            <p class="card-text"style="color:green;">+500 <br> Since last month</p>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Earning</h5>
-                            <p class="card-text">$12,800,000 <br> Since last month</p>
+                            <p class="card-text"style="color:green;">$12,800,000 <br> Since last month</p>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">User</h5>
-                            <p class="card-text">+210 <br> Since last month</p>
+                            <p class="card-text"style="color:green;">+210 <br> Since last month</p>
                         </div>
                     </div>
                 </div>
