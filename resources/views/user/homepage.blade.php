@@ -177,7 +177,7 @@
     <footer class="main-footer text-center" style="background-color: #F78405; color: #ffffff">
         <div class="row">
             <div class="col text-start ms-4">
-                <h1>Atma Restaurant</h1>
+                <h1 style="font-family:Italianno;">Atma Restaurant</h1>
                 <p>Jl. Babasari, Atma Jaya Yogyakartya, 93401, IND</p>
                 <p>+623456789</p>
             </div>
