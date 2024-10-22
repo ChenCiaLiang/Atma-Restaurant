@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <style>
         .grid-container {
             display: grid;
@@ -54,7 +58,7 @@
     </style>
 </head>
 
-<body style="background-color:rgba(240, 218, 161, 1)">
+<body style="background-color:rgba(240, 218, 161, 1);font-family:Inter;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(247, 132, 5, 1);">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url('/') }}" style="font-family: Italianno; font-size: 2rem; color: white;">Atma
@@ -115,16 +119,19 @@
                     <p class="card-text text-center" style="font-size:3vw;color:grey;"><i
                             class="fa-solid fa-utensils"></i></p>
                     <p class="card-text text-center" style="color:grey;">History not found .. <br>order food <a
-                            href="#" style="color:grey;">here</a></p>
+                            href="{{url('menu')}}" style="color:grey;">here</a></p>
                 </div>
             </div>
         </div>
 
         <div class="item3">
-            <div class="card text-start" style="padding:2rem;border-radius:25px;padding-bottom:10vh;">
-                <h5 class="card-title"></h5>
+            <div class="card text-start" style="padding:0.5rem;border-radius:25px;">
+            <h5 class="card-title" style="margin-left:2%;">Ongoing Order</h5>
                 <div class="card-body " style="padding-left:20vw;padding-right:20vw;">
-
+                    <p class="card-text text-center" style="font-size:3vw;color:grey;"><i
+                            class="fa-solid fa-utensils"></i></p>
+                    <p class="card-text text-center" style="color:grey;">You haven't ordered anything .. <br>order food <a
+                            href="{{url('menu')}}" style="color:grey;">here</a></p>
                 </div>
             </div>
         </div>

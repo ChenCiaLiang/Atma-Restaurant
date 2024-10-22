@@ -8,7 +8,10 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <style>
         .grid-container {
             display: grid;
@@ -54,7 +57,7 @@
     </style>
 </head>
 
-<body style="background-color:#F0DAA1;">
+<body style="background-color:#F0DAA1;font-family:Inter;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgba(247, 132, 5, 1);">
         <div class="container-fluid">
             <a class="navbar-brand" href="{{ url('/') }}" style="font-family: Italianno; font-size: 2rem; color: white;">Atma
@@ -92,61 +95,71 @@
             </div>
         </div>
     </nav>
-    <div style="text-align:center;margin-bottom:5%;margin-top:2%;">
-        <h1>Pembayaran</h1>
+    <div style="text-align:center;margin-bottom:5%;margin-top:2%;font-family:Italianno;">
+        <h1 style="font-size:5vw;">Pembayaran</h1>
     </div>
-    <div class="container" style="padding:2px;">
-        <div class="grid-container">
+    <div class="container " style="padding:2px;justify-content:center;">
+        <div class="grid-container justify-content-center">
             <div style="padding:3%;">
                 <div class="row align-items-center">
                     <p class="col text-start" style="font-size:1.5vw;"><strong>Your Order</strong></p>
                     <p class="col text-end" style="font-size:1.5vw;margin-right:1.5vw;"><strong>Remove All</strong></p>
                 </div>
-                    <div class="card mb-3" style="width:30vw;height:15vh;">
+                    
+                    <div class="card mb-3" >
                         <div class="row g-0">
-                            <div class="col">
-                                <img src="{{ asset('image/bibimbap.png') }}" class="img-fluid rounded-start"
-                                    style="width:100%;height:86%;object-fit:cover;" alt="...">
+                            <div class="col-md-4">
+                            <img src="{{ asset('image/bibimbap.png') }}" class="img-fluid rounded-start" alt="..." style="width:100%;height:100%;">
                             </div>
                             <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title text-start" style="font-size:1vw;">Bibimbap</h5>
-                                    <p class="card-text text-start" style="font-size:1vw;">Rp80.000</p>
+                            <div class="card-body">
+                                <h5 class="card-title text-start"style="font-size:1vw;">Bibimbapa</h5>
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text text-start"style="font-size:1vw;">Rp80.000</p>
+                                    <i class="bi bi-x-circle" style="font-size:2vw;color:red;"></i>
                                 </div>
+                                
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                            <img src="{{ asset('image/ramen.png') }}" class="img-fluid rounded-start" alt="..." style="width:100%;height:100%;">
+                            </div>
+                            <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title text-start"style="font-size:1vw;">Sauted Pork Ramen</h5>
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text text-start"style="font-size:1vw;">Rp70.000</p>
+                                    <i class="bi bi-x-circle" style="font-size:2vw;color:red;"></i>
+                                </div>
+                                
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="card mb-3" >
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                            <img src="{{ asset('image/thai.png') }}" class="img-fluid rounded-start" alt="..." style="width:100%;height:100%;">
+                            </div>
+                            <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title text-start"style="font-size:1vw;">Thai Iced Tea</h5>
+                                <div class="d-flex justify-content-between">
+                                    <p class="card-text text-start"style="font-size:1vw;">Rp25.000</p>
+                                    <i class="bi bi-x-circle" style="font-size:2vw;color:red;"></i>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card mb-3" style="width:30vw;height:15vh;">
-                        <div class="row g-0">
-                            <div class="col">
-                                <img src="{{ asset('image/ramen.png') }}" class="img-fluid rounded-start"
-                                    style="width:100%;height:86%;object-fit:cover;" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title text-start" style="font-size:1vw;">Sauted Pork Ramen</h5>
-                                    <p class="card-text text-start" style="font-size:1vw;">Rp70.000</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card mb-3" style="width:30vw;height:15vh;">
-                        <div class="row g-0">
-                            <div class="col">
-                                <img src="{{ asset('image/thai.png') }}" class="img-fluid rounded-start"
-                                    style="width:100%;height:83%;object-fit:cover;" alt="...">
-                            </div>
-                            <div class="col-md-8">
-                                <div class="card-body">
-                                    <h5 class="card-title text-start" style="font-size:1vw;">Bibimbap</h5>
-                                    <p class="card-text text-start" style="font-size:1vw;">Rp25.000</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-               
             </div>
 
             <div style="padding:3%;">
@@ -154,7 +167,7 @@
                 
                     <div class="card" style="width: 30vw;">
                         <div class="card-body">
-                            <h5 class="card-title text-start"><strong>Pesanan</strong></h5>
+                            <h5 class="card-title text-start" style="font-size:1vw;"><strong>Pesanan</strong></h5>
                             <div class="row">
                                 <p class="col card-text text-start" style="font-size:1vw;">1 Bibimbap</p>
                                 <p class="col card-text text-end" style="font-size:1vw;">Rp80.000</p>
@@ -195,29 +208,30 @@
     </div>
 
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col">
-                <p class="text-start" style="font-size:1vw;"><strong>Pilih Pembayaran</strong></p>
-            </div>
+    
+    <div class="container mt-5 d-flex justify-content-between" style="max-width:68%;">
+       <div>
+             <p class="text-start" style="font-size:1vw;"><strong>Pilih Pembayaran</strong></p>
+       </div>
 
-            <div class="col" style="margin-left:42%;">
+       <div>
+            <div class="container d-flex gap-2">
                 <a href="{{url('qris')}}">
                     <button
-                        style="width:8vw;height:5vh;border-radius:25px;margin-right:3%;background-color:#F78405;color:white;font-size:0.8vw;">QRIS
+                        style="width:8vw;height:5vh;border-radius:25px;margin-right:3%;background-color:#F78405;color:white;font-size:0.8vw;border:none;">QRIS
                     </button>
                 </a>
-                <a href="{{url('virtual')}}">
+                <a href="{{url('virtual')}}" >
                     <button
-                        style="width:8vw;height:5vh;border-radius:25px;background-color:#F78405;color:white;font-size:0.8vw;">Virtual Account
+                        style="width:8vw;height:5vh;border-radius:25px;background-color:#F78405;color:white;font-size:0.8vw;text-decoration:none;border:none;">Virtual Account
                     </button>
-                </a>
+                </a>    
             </div>
-        </div>
+       </div>
     </div>
 
     <!-- Main Footer -->
-    <footer class="main-footer text-center" style="background-color: #F78405; color: #ffffff;margin-top:10%">
+    <footer class="main-footer text-center" style="background-color: #F78405; color: #ffffff;margin-top:10%;width:100%;height:100%;">
         <div class="row">
             <div class="col text-start ms-4">
                 <h1>Atma Restaurant</h1>
