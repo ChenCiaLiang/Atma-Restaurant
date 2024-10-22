@@ -119,16 +119,19 @@
                     <p class="card-text text-center" style="font-size:3vw;color:grey;"><i
                             class="fa-solid fa-utensils"></i></p>
                     <p class="card-text text-center" style="color:grey;">History not found .. <br>order food <a
-                            href="#" style="color:grey;">here</a></p>
+                            href="{{url('menu')}}" style="color:grey;">here</a></p>
                 </div>
             </div>
         </div>
 
         <div class="item3">
-            <div class="card text-start" style="padding:2rem;border-radius:25px;padding-bottom:10vh;">
-                <h5 class="card-title"></h5>
+            <div class="card text-start" style="padding:0.5rem;border-radius:25px;">
+            <h5 class="card-title" style="margin-left:2%;">Ongoing Order</h5>
                 <div class="card-body " style="padding-left:20vw;padding-right:20vw;">
-
+                    <p class="card-text text-center" style="font-size:3vw;color:grey;"><i
+                            class="fa-solid fa-utensils"></i></p>
+                    <p class="card-text text-center" style="color:grey;">You haven't ordered anything .. <br>order food <a
+                            href="{{url('menu')}}" style="color:grey;">here</a></p>
                 </div>
             </div>
         </div>
