@@ -12,8 +12,8 @@
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <style>
         .grid-container {
@@ -119,7 +119,7 @@
 
                 <div>
                     <button class="btn btn-success" type="submit"
-                        style="width:10vw;border-radius:25px;background-color:rgba(54, 61, 32, 1);margin-top:3vh;height:5vh;font-size:1vw;">
+                        style="width:10vw;border-radius:25px;background-color: #F78405;;margin-top:3vh;height:5vh;font-size:1vw;border:none;">
                         <strong>Confirm</strong>
                     </button>
                 </div>
@@ -131,7 +131,7 @@
     <footer class="main-footer text-center" style="background-color: #F78405; color: #ffffff">
         <div class="row">
             <div class="col text-start ms-4">
-                <h1>Atma Restaurant</h1>
+                <h1 style="font-family:Italianno">Atma Restaurant</h1>
                 <p>Jl. Babasari, Atma Jaya Yogyakartya, 93401, IND</p>
                 <p>+623456789</p>
             </div>

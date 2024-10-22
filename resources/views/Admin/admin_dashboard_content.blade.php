@@ -15,7 +15,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Order</h5>
-                            <p class="card-text" style="color:green;">+150 <br> Since last month</p>
+                            <p class="card-text" style="color:rgb(0, 255, 0);">+150</p>
+                            <p class="mb-0">Since last month</p>
                         </div>
                     </div>
                 </div>
@@ -23,7 +24,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Reservation</h5>
-                            <p class="card-text"style="color:green;">+500 <br> Since last month</p>
+                            <p class="card-text" style="color:rgb(0, 255, 0);">+500</p>
+                            <p class="mb-0">Since last month</p>
                         </div>
                     </div>
                 </div>
@@ -31,7 +33,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">Earning</h5>
-                            <p class="card-text"style="color:green;">$12,800,000 <br> Since last month</p>
+                            <p class="card-text" style="color:rgb(0, 255, 0);">$12,800,000</p>
+                            <p class="mb-0">Since last month</p>
                         </div>
                     </div>
                 </div>
@@ -39,7 +42,8 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">User</h5>
-                            <p class="card-text"style="color:green;">+210 <br> Since last month</p>
+                            <p class="card-text" style="color:rgb(0, 255, 0);">+210</p>
+                            <p class="mb-0">Since last month</p>
                         </div>
                     </div>
                 </div>
