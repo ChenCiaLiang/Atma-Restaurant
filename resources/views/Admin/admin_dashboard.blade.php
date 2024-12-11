@@ -190,6 +190,14 @@
                             <i class="fa-solid fa-align-left"></i>
                         </button>
                     </div>
+                    <form action="{{route('admin.logout')}}" method="POST">
+                        @csrf
+                        <div class="d-flex align-items-end">
+                            <button class="btn btn-danger" type="submit">
+                                Log out
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </nav>
             <div class="content-wrapper">

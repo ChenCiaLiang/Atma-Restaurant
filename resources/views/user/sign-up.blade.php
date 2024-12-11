@@ -4,116 +4,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Register</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
     <style>
-        @media (max-width: 850px) {
-            .form-floating {
-                width: 80%;
-                margin: 0 auto;
+        
+        .bg-image {
+            background-image: url('{{ asset('image/signup.png') }}');
+            background-size: cover;
+            background-position: center;
+            width: 100%;
+            height: 100vh; 
+        }
+
+        
+        .form-container {
+            background-color:rgba(240, 218, 161, 1);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        
+        .input-group .form-control {
+            border-radius: 30px;
+            padding-left: 40px; 
+        }
+
+        .input-group-text {
+            border-radius: 30px;
+            background-color: #f1f1f1;
+        }
+
+        .input-group .icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+       
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 20px;
             }
-
-            .icon {
-                right: 5px;
-            }
-
-            @media(max-width: 650px) {
-                .form-floating {
-                    width: 60%;
-                    margin: 0 auto;
-                }
-
-                .icon {
-                    right: 5px;
-                }
+            .bg-image {
+                height: 80vh; 
             }
         }
     </style>
 </head>
 
-<body style="font-famiy:Inter;">
-    <div class="d-flex justify-content-start" style="background-color:rgba(240, 218, 161, 1);">
-        <img src="{{ asset('image/signup.png') }}" alt="" style="width:50%;">
-        <div class="d-flex justify-content-end">
-            <div class="container" style="margin-top:15vh;margin-left:1vw;">
-                <h1 style="color:white;"><strong>Selamat Datang!</strong></h1>
-                <h5 style="color:white;opacity:0.5;">Silahkan Daftar Disini</h5>
-                <form action="{{ url('login') }}">
-                    <p style="padding-left:1vw;margin:0;"><strong>Username</strong></p>
-                    <div class="form-floating mb-2">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Username"
-                            style="border-radius:50px;width:30vw;padding-left:2vw;" required>
-                        <label for="floatingInput" style="padding-left:2vw;">Username</label>
+<body>
 
-                    </div>
-                    <p style="padding-left:1vw;margin:0;"><strong>Email</strong></p>
-                    <div class="form-floating mb-2">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Email"
-                            style="border-radius:50px;width:30vw;padding-left:2vw;" required>
-                        <label for="floatingInput" style="padding-left:2vw;">Email</label>
+    
+    <div class="bg-image d-flex justify-content-center align-items-center">
 
-                    </div>
+        
+        <div class="form-container">
+            <h2 class="text-center mb-4">Register</h2>
 
-                    <p style="padding-left:1vw;margin:0;"><strong>Nomor Telepon</strong></p>
-                    <div class="form-floating mb-2">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Username"
-                            style="border-radius:50px;width:30vw;padding-left:2vw;" required>
-                        <label for="floatingInput" style="padding-left:2vw;">Nomor Telepon</label>
-                    </div>
+           
+            <form action="{{ route('user.register')  }}" method="POST">
+                @csrf
 
-                    <p style="padding-left:1vw;margin:0;"><strong>Tanggal Lahir</strong></p>
-                    <div class="form-floating mb-2">
-                        <input type="date" class="form-control" id="floatingInput"
-                            style="border-radius:50px;width:30vw;padding-left:2vw; padding-top:0;padding-right:1vw;padding-bottom:0;"
-                            required>
-                    </div>
-
-                    <p style="padding-left:1vw;margin:0;"><strong>Password</strong></p>
-                    <div class="form-floating mb-2">
-                        <input type="password" class="form-control" id="pwd" placeholder="Password"
-                            style="border-radius:50px;width:30vw;padding-left:2vw;" required>
-                        <label for="pwd" style="padding-left:2vw;">Password</label>
-                        <img onclick="show()" class="icon" src="{{ url('image/open.png') }}" id="EYE"
-                            style="position: absolute; right: 1vw; top: 50%; transform: translateY(-50%); cursor: pointer;">
-                    </div>
-
-                    <div style="display:flex;justify-content:center;align-items:center;">
-                        <button class="btn btn-success" type="submit"
-                            style="width:10vw;border-radius:25px;background-color:rgba(54, 61, 32, 1);margin-top:1vh;background-color:rgba(247, 132, 5, 1);border:none;font-size:1vw;">
-                            <strong>Register</strong>
-                        </button>
-                    </div>
-                </form>
-
-                <div class="container" style="margin-top:3vh;display:flex;align-items:center;margin-left:1.5vw;">
-                    <p style="margin:0;"><strong>Sudah Punya Akun?</strong></p>
-                    <a type="button" href="{{ url('login') }}" class="btn btn-outline-light"
-                        style="border-color:black;height:2vh;width:8vw;display:flex;justify-content:center;align-items:center;margin-left:1vw;font-size:1vw;padding:1rem;border-radius:25px;background-color:rgba(247, 132, 5, 1);border:none;">
-                        Login
-                    </a>
+                
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="bi bi-person-fill"></i></span>
+                    <input type="text" class="form-control" placeholder="Username" name="username" required>
                 </div>
-            </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="bi bi-envelope-fill"></i></span>
+                    <input type="email" class="form-control" placeholder="Email" name="email" required>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="bi bi-calendar-fill"></i></span>
+                    <input type="date" class="form-control" placeholder="Tanggal Lahir" name="tgl_lahir" required>
+                </div>
+
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="bi bi-telephone-fill"></i></span>
+                    <input type="text" class="form-control" placeholder="Nomor Telepon" name="no_telp" required>
+                </div>
+        
+                <div class="input-group mb-3">
+                    <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                    <input type="password" class="form-control" placeholder="Password" name="password" required>
+                </div>
+
+                
+                <button type="submit" class="btn btn-primary w-100 rounded-pill" style="background-color:rgba(237, 120, 4, 1);border-color:rgba(237, 120, 4, 1)">Register</button>
+
+                
+                <p class="mt-3 text-center">Dont have an account? <a href="{{ url('login') }}">Login here</a></p>
+            </form>
         </div>
     </div>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    function show() {
-        var a = document.getElementById("pwd");
-        var b = document.getElementById("EYE");
-        if (a.type == "password") {
-            a.type = "text";
-            b.src = "{{ url('image/open.png') }}";
-        } else {
-            a.type = "password";
-            b.src = "{{ url('image/close.png') }}";
-        }
-    }
-</script>
 
 </html>
