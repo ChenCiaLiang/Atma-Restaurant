@@ -5,6 +5,7 @@ use App\Http\Middleware\Authenticate;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ReservasiController;
 
 
 
@@ -43,14 +44,14 @@ Route::middleware(['auth:user'])->group(function () {
 
     Route::post('/user/update-profile', [UserController::class, 'updateProfile'])->name('user.updateProfile');
 
+    Route::post('reservasi', [ReservasiController::class, 'store'])->name('reservasi.create');
 
+    Route::get('menu', [MenuController::class, 'indexUser']);
+    //---------------------------------------------------------------------------------------------------------------------------------
 
     Route::get('edit', function () {
         return view('/user/main/edit');
     });
-
-    Route::get('menu', [MenuController::class, 'indexUser']);
-
 
     Route::get('reservasi', function () {
         return view('/user/main/reservasi');
@@ -72,8 +73,8 @@ Route::middleware(['auth:user'])->group(function () {
         return view('Notif.pembayaranBerhasil');
     });
 
-    Route::get('pemesananBerhasil', function () {
-        return view('Notif.pemesananBerhasil');
+    Route::get('pemesanan', function () {
+        return view('Notif.pemesanan');
     });
 });
 
