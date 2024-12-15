@@ -103,25 +103,25 @@
 
         </div>
         <div class="item2" style="text-align:start;padding-top:6vh;">
-            <form action="{{ url('profile') }}">
+            <form action="{{ route('user.updateProfile') }}" method="POST" enctype="multipart/form-data">
                 <p style="padding-left:1vw;margin:0;"><strong>Update Username</strong></p>
                 <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Username"
-                        style="border-radius:50px;width:30vw;padding-left:2vw;">
+                    <input type="text" class="form-control" id="floatingInput" placeholder="Username" 
+                        style="border-radius:50px;width:30vw;padding-left:2vw;"  value="{{ $user->username }}" required>
                     <label for="floatingInput" style="padding-left:2vw;">Username</label>
                 </div>
 
                 <p style="padding-left:1vw;margin:0;"><strong>Email</strong></p>
                 <div class="form-floating mb-2">
                     <input type="text" class="form-control" id="floatingInput" placeholder="email@gmail.com"
-                        style="border-radius:50px;width:30vw;padding-left:2vw;">
+                        style="border-radius:50px;width:30vw;padding-left:2vw;" value="{{ $user->email }}" required>
                     <label for="floatingInput" style="padding-left:2vw;">Email</label>
                 </div>
 
                 <p style="padding-left:1vw;margin:0;"><strong>Nomor Telepon</strong></p>
                 <div class="form-floating mb-2">
                     <input type="text" class="form-control" id="floatingInput" placeholder="Nomor telepon"
-                        style="border-radius:50px;width:30vw;padding-left:2vw;">
+                        style="border-radius:50px;width:30vw;padding-left:2vw;" value="{{ $user->no_telp }}" required>
                     <label for="floatingInput" style="padding-left:2vw;">Nomor Telepon</label>
                 </div>
 

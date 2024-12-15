@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password',
         'no_telp',
         'tgl_lahir',
-        'foto',
+        'fotoPath',
     ];
 
     public function reservasi()

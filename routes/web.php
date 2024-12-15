@@ -41,12 +41,16 @@ Route::middleware(['auth:user'])->group(function () {
 
     Route::get('profile', [UserController::class, 'index']);
 
+    Route::post('/user/update-profile', [UserController::class, 'updateProfile'])->name('user.updateProfile');
+
+
 
     Route::get('edit', function () {
         return view('/user/main/edit');
     });
 
     Route::get('menu', [MenuController::class, 'indexUser']);
+
 
     Route::get('reservasi', function () {
         return view('/user/main/reservasi');
