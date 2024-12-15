@@ -15,6 +15,13 @@ class Menu extends Model
     protected $fillable = [
         'nama',
         'harga',
+        'jenis',
         'gambar_makanan',
     ];
+
+    public function pesanan()
+    {
+        return $this->hasMany(Pesanan::class);
+    }
+
 }

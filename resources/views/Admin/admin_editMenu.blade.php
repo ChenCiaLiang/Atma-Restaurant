@@ -49,10 +49,10 @@
                             <div class="col mt-4">
                                 <h5>Nama Menu:</h5>
                                 <h4 class="fw-bold">{{$menu->nama}}</h4>
-                                <!-- <h5>Kategori:</h5>
-                                <h4 class="fw-bold">Noodles</h4> -->
                                 <h5>Harga:</h5>
                                 <h4 class="fw-bold">{{$menu->harga}}</h4>
+                                <h5>Jenis:</h5>
+                                <h4 class="fw-bold">{{$menu->jenis}}</h4>
                             </div>
                         </div>
                         <div class="row">
@@ -72,6 +72,12 @@
                                         <div class="form-floating">
                                             <input type="text" class="form-control" id="harga" placeholder="Harga" name="harga"required>
                                             <label for="harga" style="padding-left:2vw;">Harga</label>
+                                        </div>
+                                        
+                                        <p style="padding-left:1vw;margin:0;margin-top:2vh;">Jenis</p>
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="jenis" placeholder="Jenis Menu" name="jenis"required>
+                                            <label for="jenis" style="padding-left:2vw;">Jenis Menu</label>
                                         </div>
                                         
                                         <p style="padding-left:1vw;margin:0;margin-top:2vh;">Gambar</p>

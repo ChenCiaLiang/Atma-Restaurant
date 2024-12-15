@@ -10,13 +10,31 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
+use Carbon\Carbon;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $user = auth('user')->user();
 
         return view('user/main/profile', compact('user'));
+    }
+
+    public function indexAll()
+    {
+        $user = User::paginate(3);
+        $userCounts = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $count = User::whereMonth('tanggal_register', $month)
+                ->whereYear('tanggal_register', Carbon::now()->year)
+                ->count();
+
+            $userCounts[] = $count;
+        }
+
+        return view('Admin.admin_user', compact('user'), ['userCounts' => $userCounts]);
     }
 
     public function register(Request $request)
@@ -29,7 +47,7 @@ class UserController extends Controller
             'tgl_lahir' => 'required',
         ]);
 
-        $fotoPath = 'user_profile/default.jpeg';  
+        $fotoPath = 'user_profile/default.jpeg';
 
         try {
             $user = User::create([
@@ -40,9 +58,9 @@ class UserController extends Controller
                 'tgl_lahir' => $request->tgl_lahir,
                 'foto' => $fotoPath,
             ]);
-            return redirect()->intended('login')->with('success', 'Berhasil membuat user'); 
+            return redirect()->intended('login')->with('success', 'Berhasil membuat user');
         } catch (Exception $e) {
-            return redirect()->intended('sign-up')->with('error', 'Gagal membuat user'); 
+            return redirect()->intended('sign-up')->with('error', 'Gagal membuat user');
         }
     }
 
@@ -69,45 +87,45 @@ class UserController extends Controller
     }
 
     public function updateProfile(Request $request)
-{
-    // Ambil pengguna yang sedang login
-    $user = auth('user')->user();
+    {
+        // Ambil pengguna yang sedang login
+        $user = auth('user')->user();
 
-    // Validasi data input
-    $request->validate([
-        'username' => 'required|string|max:255|unique:users,username,' . $user->id_user,
-        'email' => 'required|string|email|max:255|unique:users,email,' . $user->id_user,
-        'no_telp' => 'required|string|max:15',
-        'tgl_lahir' => 'required|date|before:today',
-        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    ]);
+        // Validasi data input
+        $request->validate([
+            'username' => 'required|string|max:255|unique:users,username,' . $user->id_user,
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id_user,
+            'no_telp' => 'required|string|max:15',
+            'tgl_lahir' => 'required|date|before:today',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-    // Path default untuk foto (jika tidak ada perubahan)
-    $fotoPath = $user->foto;
+        // Path default untuk foto (jika tidak ada perubahan)
+        $fotoPath = $user->foto;
 
-    // Periksa apakah foto baru diunggah
-    if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-        // Hapus foto lama jika ada
-        if (!is_null($user->foto) && File::exists(public_path('storage/' . $user->foto))) {
-            File::delete(public_path('storage/' . $user->foto));
+        // Periksa apakah foto baru diunggah
+        if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
+            // Hapus foto lama jika ada
+            if (!is_null($user->foto) && File::exists(public_path('storage/' . $user->foto))) {
+                File::delete(public_path('storage/' . $user->foto));
+            }
+
+            // Simpan foto baru ke direktori storage
+            $fotoPath = $request->file('foto')->store('user_profile', 'public');
         }
 
-        // Simpan foto baru ke direktori storage
-        $fotoPath = $request->file('foto')->store('user_profile', 'public');
+        // Update data pengguna
+        $user->update([
+            'username' => $request->username,
+            'email' => $request->email,
+            'no_telp' => $request->no_telp,
+            'tgl_lahir' => $request->tgl_lahir,
+            'foto' => $fotoPath,
+        ]);
+
+        // Redirect ke halaman profil dengan pesan sukses
+        return redirect()->route('user.profile')->with('success', 'Profil berhasil diperbarui.');
     }
-
-    // Update data pengguna
-    $user->update([
-        'username' => $request->username,
-        'email' => $request->email,
-        'no_telp' => $request->no_telp,
-        'tgl_lahir' => $request->tgl_lahir,
-        'foto' => $fotoPath,
-    ]);
-
-    // Redirect ke halaman profil dengan pesan sukses
-    return redirect()->route('user.profile')->with('success', 'Profil berhasil diperbarui.');
-}
 
 
     public function logout()
@@ -115,4 +133,26 @@ class UserController extends Controller
         Auth::guard('user')->logout();
         return redirect('/');
     }
+
+    public function destroy($id_user)
+    {
+        $user = User::findOrFail($id_user);
+        $user->delete();
+
+        return redirect()->route('admin_user')->with('success', 'Berhasil menghapus user');
+    }
+
+    // public function showChart()
+    // {
+    //     $userCounts = [];
+
+    //     for ($month = 1; $month <= 12; $month++) {
+    //         $count = User::whereMonth('tanggal_register', $month)
+    //             ->whereYear('tanggal_register', Carbon::now()->year)
+    //             ->count();
+
+    //         $userCounts[] = $count;
+    //     }
+    //     return view('admin_user', ['userCounts' => $userCounts]);
+    // }
 }

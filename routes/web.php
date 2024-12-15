@@ -6,6 +6,8 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReservasiController;
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\PesananController;
 
 
 
@@ -47,6 +49,12 @@ Route::middleware(['auth:user'])->group(function () {
     Route::post('reservasi', [ReservasiController::class, 'store'])->name('reservasi.create');
 
     Route::get('menu', [MenuController::class, 'indexUser']);
+
+    Route::get('pembayaran/user', [PembayaranController::class, 'indexUser']);
+    Route::get('pembayaran/admin', [PembayaranController::class, 'indexAdmin']);
+
+    Route::get('pesanan/all', [PesananController::class, 'indexAll']);
+    Route::get('pesanan/store', [PesananController::class, 'store']);
     //---------------------------------------------------------------------------------------------------------------------------------
 
     Route::get('edit', function () {
@@ -87,12 +95,21 @@ Route::middleware(['auth:admin'])->group(function () {
         return view('Admin.admin_dashboard_content');
     });
 
-    Route::get('admin_user', function () {
-        return view('Admin.admin_user');
-    });
+    // Route::get('admin_user', function () {
+    //     return view('Admin.admin_user');
+    // });
 
-    Route::get('admin_menu', [MenuController::class, 'indexAdmin']);
+    // Route::get('Admin/admin_menu', function () {
+    //     return view('Admin.admin_menu');
+    // })->name('admin_menu');
+
+    Route::get('admin_menu', [MenuController::class, 'indexAdmin'])->name('admin_menu');
     Route::post('menu_store', [MenuController::class, 'store'])->name('menu.store');
+    
+    Route::delete('admin_user/{id_user}', [UserController::class, 'destroy'])->name('user.delete');
+    Route::get('admin_user', [UserController::class, 'indexAll'])->name('admin_user');
+    // Route::get('admin_user', [UserController::class, 'showChart'])->name('admin_user');
+
 
     Route::get('menu_edit/{id_menu}', [MenuController::class, 'edit'])->name('menu.edit');
     Route::post('menu_update/{id_menu}', [MenuController::class, 'update'])->name('menu.update');

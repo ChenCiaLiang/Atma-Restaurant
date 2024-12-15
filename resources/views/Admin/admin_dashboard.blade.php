@@ -248,17 +248,16 @@
                 }
             }
         });
-
-        // User chart
+        
         new Chart(document.getElementById("userChart"), {
             type: "bar",
             data: {
                 labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
                 datasets: [{
-                    label: "User",
+                    label: "User Registrations",
                     backgroundColor: "#FB9D14",
                     hoverBackgroundColor: "#EE7804",
-                    data: [69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68],
+                    data: userData,
                     barPercentage: .75,
                     categoryPercentage: .5
                 }]

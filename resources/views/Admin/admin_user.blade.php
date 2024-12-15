@@ -27,27 +27,33 @@
                         </div>
                         <div class="row">
                             <div class="container-fluid d-flex flex-column justify-content-center">
-                                @for ($i = 0; $i < 3; $i++)
+                                @forelse ($user as $item)
                                     <div class="card recentUserCard my-2 py-3">
                                         <div class="row recentUserRow">
                                             <div class="col d-flex justify-content-start align-items-center">
                                                 <i class="fa-solid fa-user mx-3" style="color: black;"></i>
-                                                <span class="fw-bold">Janice</span>
+                                                <span class="fw-bold">{{ $item->username }}</span>
                                             </div>
                                             <div class="col d-flex justify-content-center align-items-center">
-                                                <p class="mb-0" style="color: black;">October 18 2024, 10:30 PM</p>
+                                                <p class="mb-0" style="color: black;">{{ $item->tanggal_register }}</p>
                                             </div>
                                             <div class="col d-flex justify-content-end align-items-center">
-                                                <button class="btn btn-success rounded-pill" style="color: rgb(255, 255, 255);">
-                                                    VIEW
-                                                </button>
-                                                <button class="btn btn-danger rounded-pill mx-3" style="color: rgb(255, 255, 255);">
-                                                    DELETE
-                                                </button>
+                                                <form action="{{ route('user.delete', $item->id_user) }}" method="POST">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-danger rounded-pill mx-3"
+                                                        style="color: rgb(255, 255, 255);" type="submit">
+                                                        DELETE
+                                                    </button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                @endfor
+                                @empty
+                                    <div class="alert alert-danger">
+                                        Data user belum tersedia
+                                    </div>
+                                @endforelse
                             </div>
                         </div>
                     </div>
@@ -69,4 +75,12 @@
             </div>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // User chart
+        var userData = @json($userCounts);
+    </script>
 @endsection

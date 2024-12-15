@@ -10,22 +10,25 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 
-    
+
 class MenuController extends Controller
 {
 
-    public function indexAdmin(){
+    public function indexAdmin()
+    {
         $menu = Menu::all();
 
-        return view('Admin.admin_menu', compact('menu'));
+        return view('Admin.admin_menu', compact('menu'))->with('success', session('success'))->with('error', session('error'));
     }
-    
-    public function indexUser(){
+
+    public function indexUser()
+    {
         $menu = Menu::all();
         return view('/user/main/menu', compact('menu'));
     }
 
-    public function edit($id_menu){
+    public function edit($id_menu)
+    {
         $menu = Menu::findOrFail($id_menu);
 
         return view('Admin.admin_editMenu', compact('menu'));
@@ -33,12 +36,15 @@ class MenuController extends Controller
 
     public function store(Request $request)
     {
+        $jenis = ['Rice', 'Noodle', 'Drink'];
+
         $request->validate([
             'nama' => 'required',
             'harga' => 'required',
-            'gambar_makanan' => 'nullable|image'
+            'gambar_makanan' => 'nullable|image',
+            'jenis' => 'required',
         ]);
-        
+
         $imagePath = '';
         if ($request->hasFile('gambar_makanan')) {
             $image = $request->file('gambar_makanan');
@@ -46,50 +52,63 @@ class MenuController extends Controller
             $image->move(public_path('images'), $imageName);
             $imagePath = 'images/' . $imageName;
         }
-        
-        Menu::create([
-            'nama' => $request->nama,
-            'harga' => $request->harga,
-            'gambar_makanan' => $imagePath,
-        ]);
-        
-        return redirect()->intended('admin_menu')->with('success', 'Berhasil membuat menu'); 
+
+        if (!in_array($request->jenis, $jenis)) {
+            return redirect()->route('admin_menu')->with('error', 'Jenis menu tidak valid');
+        } else {
+            Menu::create([
+                'nama' => $request->nama,
+                'harga' => $request->harga,
+                'gambar_makanan' => $imagePath,
+                'jenis' => $request->jenis,
+            ]);
+            return redirect()->route('admin_menu')->with('success', 'Berhasil membuat menu');
+        }
     }
 
     public function update(Request $request, $id_menu)
     {
+        $jenis = ['Rice', 'Noodle', 'Drink'];
 
         $menu = Menu::findOrFail($id_menu);
+
         $request->validate([
             'nama' => 'required',
             'harga' => 'required',
-            'gambar_makanan' => 'nullable|image'
+            'gambar_makanan' => 'nullable|image',
+            'jenis' => 'required',
         ]);
-        $imageLama = $menu->gambar_makanan;
-        $imagePath = $menu->gambar_makanan;
-        if ($request->hasFile('gambar_makanan')) {
-            $image = $request->file('gambar_makanan');
-            $imageName = time() . '.' . $image->extension();
-            $image->move(public_path('images'), $imageName);
-            $imagePath = 'images/' . $imageName;
-            File::delete(public_path($imageLama));
-        }
-        $menu->update([
-            'nama' => $request->nama,
-            'harga' => $request->harga,
-            'gambar_makanan' => $imagePath,
 
-        ]);
-        
-        return redirect()->intended('admin_menu')->with('success', 'Berhasil mengupdate menu');  
+        $imageLama = $menu->gambar_makanan;
+
+        $imagePath = $imageLama;
+
+        if (!in_array($request->jenis, $jenis)) {
+            return redirect()->route('admin_menu')->with('error', 'Jenis menu tidak valid');
+        } else {
+            if ($request->hasFile('gambar_makanan')) {
+                $image = $request->file('gambar_makanan');
+                $imageName = time() . '.' . $image->extension();
+                $image->move(public_path('images'), $imageName);
+                $imagePath = 'images/' . $imageName;
+                File::delete(public_path($imageLama));
+            }
+
+            $menu->update([
+                'nama' => $request->nama,
+                'harga' => $request->harga,
+                'gambar_makanan' => $imagePath,
+                'jenis' => $request->jenis,
+            ]);
+            return redirect()->route('admin_menu')->with('success', 'Berhasil membuat menu');
+        }
     }
 
     public function destroy($id_menu)
     {
-
         $menu = Menu::find($id_menu);
         File::delete(public_path($menu->gambar_makanan));
         $menu->delete();
-        return redirect()->intended('admin_menu')->with('success', 'Berhasil menghapus menu');  
+        return redirect()->intended('admin_menu')->with('success', 'Berhasil menghapus menu');
     }
 }

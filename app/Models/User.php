@@ -27,11 +27,17 @@ class User extends Authenticatable
         'no_telp',
         'tgl_lahir',
         'foto',
+        'tanggal_register',
     ];
 
     public function reservasi()
     {
         return $this->hasMany(Reservasi::class);
+    }
+
+    public function pemesanan()
+    {
+        return $this->hasMany(Pemesanan::class);
     }
 
     /**
