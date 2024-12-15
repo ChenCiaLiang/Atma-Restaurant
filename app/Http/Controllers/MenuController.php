@@ -24,7 +24,23 @@ class MenuController extends Controller
     public function indexUser()
     {
         $menu = Menu::all();
+
         return view('/user/main/menu', compact('menu'));
+    }
+
+    public function showMenu($jenis = 'all')
+    {
+        if ($jenis == 'Rice') {
+            $menu = Menu::where('jenis', 'Rice')->get();
+        } elseif ($jenis == 'Drink') {
+            $menu = Menu::where('jenis', 'Drink')->get();
+        } elseif ($jenis == 'Noodle') {
+            $menu = Menu::where('jenis', 'Noodle')->get();
+        } else {
+            $menu = Menu::all();
+        }
+
+        return view('user.main.menu', compact('menu'));
     }
 
     public function edit($id_menu)
@@ -61,6 +77,7 @@ class MenuController extends Controller
                 'harga' => $request->harga,
                 'gambar_makanan' => $imagePath,
                 'jenis' => $request->jenis,
+                'jumlah_menu' => 0,
             ]);
             return redirect()->route('admin_menu')->with('success', 'Berhasil membuat menu');
         }
@@ -99,6 +116,7 @@ class MenuController extends Controller
                 'harga' => $request->harga,
                 'gambar_makanan' => $imagePath,
                 'jenis' => $request->jenis,
+                'jumlah_menu' => 0,
             ]);
             return redirect()->route('admin_menu')->with('success', 'Berhasil membuat menu');
         }

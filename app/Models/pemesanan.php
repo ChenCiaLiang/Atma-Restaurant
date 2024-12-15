@@ -22,9 +22,9 @@ class pemesanan extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function pesanan()
+    public function menu()
     {
-        return $this->hasMany(Pesanan::class);
+        return $this->hasMany(Menu::class);
     }
 
     public function pembayaran()

@@ -13,15 +13,17 @@ class Menu extends Model
     protected $primaryKey = 'id_menu';
 
     protected $fillable = [
+        'id_pemesanan',
         'nama',
         'harga',
         'jenis',
+        'jumlah_menu',
         'gambar_makanan',
     ];
 
-    public function pesanan()
+    public function pemesanan()
     {
-        return $this->hasMany(Pesanan::class);
+        return $this->belongsTo(Pemesanan::class);
     }
 
 }

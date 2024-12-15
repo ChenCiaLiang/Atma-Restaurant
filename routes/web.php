@@ -49,6 +49,7 @@ Route::middleware(['auth:user'])->group(function () {
     Route::post('reservasi', [ReservasiController::class, 'store'])->name('reservasi.create');
 
     Route::get('menu', [MenuController::class, 'indexUser']);
+    Route::get('menu/{jenis}', [MenuController::class, 'showMenu']);
 
     Route::get('pembayaran/user', [PembayaranController::class, 'indexUser']);
     Route::get('pembayaran/admin', [PembayaranController::class, 'indexAdmin']);
@@ -108,7 +109,6 @@ Route::middleware(['auth:admin'])->group(function () {
     
     Route::delete('admin_user/{id_user}', [UserController::class, 'destroy'])->name('user.delete');
     Route::get('admin_user', [UserController::class, 'indexAll'])->name('admin_user');
-    // Route::get('admin_user', [UserController::class, 'showChart'])->name('admin_user');
 
 
     Route::get('menu_edit/{id_menu}', [MenuController::class, 'edit'])->name('menu.edit');
