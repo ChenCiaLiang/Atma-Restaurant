@@ -17,13 +17,17 @@ class Menu extends Model
         'nama',
         'harga',
         'jenis',
-        'jumlah_menu',
         'gambar_makanan',
     ];
 
     public function pemesanan()
     {
         return $this->belongsTo(Pemesanan::class);
+    }
+
+    public function keranjang()
+    {
+        return $this->hasMany(Keranjang::class);
     }
 
 }

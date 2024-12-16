@@ -63,20 +63,20 @@
                                     <div class="mx-3">
                                         <p class="m-0" style="padding-left:1vw;">Nama Menu</p>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="namaMenu" name="nama"
+                                            <input type="text" class="form-control" id="namaMenu" name="nama" style="padding-left:2.2rem;"
                                                 placeholder="Nama Menu" required>
                                             <label for="namaMenu" style="padding-left:2vw;">Nama Menu</label>
                                         </div>
 
                                         <p style="padding-left:1vw;margin:0;margin-top:2vh;">Harga</p>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="harga" placeholder="Harga" name="harga"required>
+                                            <input type="text" class="form-control" id="harga" placeholder="Harga" name="harga" style="padding-left:2.2rem;"required>
                                             <label for="harga" style="padding-left:2vw;">Harga</label>
                                         </div>
                                         
                                         <p style="padding-left:1vw;margin:0;margin-top:2vh;">Jenis</p>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="jenis" placeholder="Jenis Menu" name="jenis"required>
+                                            <input type="text" class="form-control" id="jenis" placeholder="Jenis Menu" name="jenis" style="padding-left:2.2rem;"required>
                                             <label for="jenis" style="padding-left:2vw;">Jenis Menu</label>
                                         </div>
                                         

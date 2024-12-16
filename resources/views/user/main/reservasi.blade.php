@@ -72,7 +72,7 @@
             @csrf
             <div class="form-group">
                 <label for="seat">Number of People</label>
-                <select class="form-control" id="seat" name="jumlah_orang" reqired style="height: 7vh;">
+                <select class="form-select" id="seat" name="jumlah_orang" reqired style="height: 7vh;">
                     <option value="1">1 People</option>
                     <option value="2">2 People</option>
                     <option value="3">3 People</option>

@@ -69,11 +69,12 @@
             <p class="card-text" style="margin:0;"><strong>Pesan : </strong></p>
             <p class="card-text" style="margin:0;"><strong>Menunggu Pembayaran</strong></p>
           </div>
-          <div style="background-color:white;margin-bottom:4%;margin-top:2%;">
-            <a href="{{url('pembayaranBerhasil')}}">
-             <img src="{{asset('image/qris.png')}}" class="card-img-top" alt="..." style="max-height:30rem"><br>
-            </a>
-            
+          <div style="background-color:transparent;margin-bottom:4%;margin-top:2%;padding:0;padding-bottom:0;max-with:">
+              <form action="{{route('history.store')}}" method="POST">
+                  @csrf
+                  <button type="submit" style="border:none;"><img src="{{asset('image/qris.png')}}" class="card-img-top" alt="..." style="max-width:30rem;min-width:30rem;"></button>
+              </form> 
+              <br>
           </div>
           <a href="#" class="btn btn-primary" style="width:100%;background-color:#F78405;border:none;border-radius:20px;"><strong>Unduh Kode QR</strong></a>
         </div>

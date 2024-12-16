@@ -47,28 +47,30 @@
                                         <p class="m-0" style="padding-left:1vw;"><strong>Nama Menu</strong></p>
                                         <div class="form-floating mb-2">
                                             <input type="text" class="form-control" id="namaMenu"
-                                                placeholder="Nama Menu" style="width:60%;" name="nama"required>
+                                                placeholder="Nama Menu" style="width:60%;padding-left:2.2rem;" name="nama"required>
                                             <label for="namaMenu" style="padding-left:2vw;">Nama Menu</label>
                                         </div>
 
                                         <p style="padding-left:1vw;margin:0;margin-top:2vh;"><strong>Harga</strong></p>
                                         <div class="form-floating mb-2">
                                             <input type="text" class="form-control" id="harga" placeholder="Harga"
-                                                style="width:60%;" name="harga"required>
+                                                style="width:60%;padding-left:2.2rem;" name="harga"required>
                                             <label for="harga" style="padding-left:2vw;">Harga</label>
                                         </div>
 
                                         <p style="padding-left:1vw;margin:0;margin-top:2vh;"><strong>Jenis</strong></p>
                                         <div class="form-floating mb-2">
-                                            <input type="text" class="form-control" id="jenis"
-                                                placeholder="Jenis Menu" style="width:60%;" name="jenis"required>
-                                            <label for="jenis" style="padding-left:2vw;">Jenis Menu</label>
+                                            <select class="form-select" name="jenis" reqired style="width:60%;border-radius:20px;padding:0;margin:0;padding-left:2.2rem;">
+                                                <option value="" selected disabled>Pilih Jenis</option>
+                                                <option value="Noodle">Noodle</option>
+                                                <option value="Rice">Rice</option>
+                                                <option value="Drink">Drink</option>
+                                            </select>
                                         </div>
-
                                         <p style="padding-left:1vw;margin:0;margin-top:2vh;">Gambar</p>
                                         <div class="form-floating-fluid">
                                             <input type="file" class="form-control" id="gambar" placeholder="Gambar"
-                                                style="width:80%;" name="gambar_makanan" required>
+                                                style="width:60%;" name="gambar_makanan" required>
                                         </div>
                                     </div>
 
@@ -98,25 +100,18 @@
                         @forelse ($menu as $item)
                             <div class="card recentMenuCard my-2 p-0 mx-5"style="height:50%">
                                 <div class="row recentMenuRow">
-                                    <div class="col d-flex justify-content-start">
+                                    <div class="col d-flex justify-content-start" style="max-width:20%">
                                         <img src="{{ asset($item->gambar_makanan) }}" class="img-fluid"
-                                            style="object-fit:cover; border-radius:8px; max-width: 220px;">
+                                            style="object-fit:cover; border-radius:8px; min-width:75%; max-width:75%;max-height:100%;min-height:100%;">
                                     </div>
                                     <div class="col">
                                         <div class="row">
                                             <h3 class="fw-bold my-4">{{ $item->nama }}</h3>
                                         </div>
-                                        <!-- <div class="row my-3">
-                                                    <h4>Category: <Strong>Noodles</Strong></h4>
-                                                </div> -->
+                                    
                                         <div class="row">
                                             <h4>Price: <Strong>{{ $item->harga }}</Strong></h4>
                                         </div>
-
-                                        <div class="row">
-                                            <h4>ID: <Strong>{{ $item->id_menu }}</Strong></h4>
-                                        </div>
-
                                         <div class="row">
                                             <h4>Jenis: <Strong>{{ $item->jenis }}</Strong></h4>
                                         </div>

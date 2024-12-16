@@ -40,6 +40,11 @@ class User extends Authenticatable
         return $this->hasMany(Pemesanan::class);
     }
 
+    public function history()
+    {
+        return $this->hasMany(History::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

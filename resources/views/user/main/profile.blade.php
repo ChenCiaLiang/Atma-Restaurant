@@ -28,6 +28,15 @@
             margin-top: 10vh;
         }
 
+        .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-body {
+    padding: 15px;
+}
+
+
         .grid-item {
             border: 1px solid rgba(0, 0, 0, 0.8);
             text-align: center;
@@ -101,7 +110,7 @@
             <div class="card align-items-center" style="padding:5vh;border-radius:25px">
                 <h1 class="card-title">My Profile <a class="bi bi-pencil-square" href="{{ url('edit') }}"
                         style="color:black;"></a></h1>
-                <img src="{{ asset($user->foto)}}" class="card-img-top rounded-circle" style="width:15vw;height:30vh;"
+                <img src="{{ asset($user->foto)}}" class="card-img-top rounded-circle" style="min-width:15rem;max-width:15rem"
                     alt="...">
                 <div class="card-body text-start">
                     <h3 class="card-title text-center">{{$user->username}}</h3>
@@ -111,36 +120,90 @@
                     <p style="border-top:1px solid black;text-align:center;margin-top:0.5rem;">Customer</p>
                 </div>
             </div>
+            <form action="{{route('logout')}}" method="POST">
+            @csrf
+            <div class="item4 text-start" style="margin-top:2rem;">
+                <button type="submit" class="btn btn-light" style="font-size:2rem;padding:15px;border-radius:30px;">Logout <i class="bi bi-box-arrow-right"></i></button>
+            </div>
+        </form>
         </div>
         <div class="item2">
-            <div class="card text-start" style="padding:2rem;border-radius:25px;">
-                <h5 class="card-title">Order History</h5>
-                <div class="card-body " style="padding-left:20vw;padding-right:20vw;">
-                    <p class="card-text text-center" style="font-size:3vw;color:grey;"><i
-                            class="fa-solid fa-utensils"></i></p>
-                    <p class="card-text text-center" style="color:grey;">History not found .. <br>order food <a
-                            href="{{url('menu')}}" style="color:grey;">here</a></p>
+            <div class="card text-start" style="padding:0.5rem; border-radius:25px;min-height:17.5rem;max-width:70rem;min-width:70rem">
+                <div>
+                    <h5 class="card-title">Order History</h5>
+                </div>
+                
+                <div class="order-list" style="max-height: 20rem; overflow-y: auto; padding-right: 10px;">
+                    @forelse ($history as $index => $item)
+                        <div class="card mb-3" style="overflow: hidden;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ asset($item->menu->gambar_makanan) }}" class="img-fluid rounded-start" alt="{{ $item->menu->nama }}" style="min-width:70%; max-width:70%;">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body" style="width:100%;">
+                                        <h5 class="card-title" style="font-size: 1.2vw;">{{ $item->menu->nama }}</h5>
+                                        <p class="card-text" style="font-size: 1vw;">Jumlah: {{ $item->jumlah_menu }}</p>
+                                        <p class="card-text" style="font-size: 1.1vw;">
+                                            <strong>Rp. {{ number_format($item->jumlah_menu * $item->menu->harga, 0, ',', '.') }}</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    @empty
+                        <div class="card-body " style="padding-left:20vw;padding-right:20vw;height:14.5rem;">
+                            <p class="card-text text-center" style="font-size:3vw;color:grey;"><i
+                                    class="fa-solid fa-utensils"></i></p>
+                            <p class="card-text text-center" style="color:grey;">You haven't ordered anything .. <br>order food <a
+                                    href="{{url('menu')}}" style="color:grey;">here</a></p>
+                        </div>
+                    @endforelse
+
                 </div>
             </div>
         </div>
 
         <div class="item3">
-            <div class="card text-start" style="padding:0.5rem;border-radius:25px;">
-            <h5 class="card-title" style="margin-left:2%;">Ongoing Order</h5>
-                <div class="card-body " style="padding-left:20vw;padding-right:20vw;">
-                    <p class="card-text text-center" style="font-size:3vw;color:grey;"><i
-                            class="fa-solid fa-utensils"></i></p>
-                    <p class="card-text text-center" style="color:grey;">You haven't ordered anything .. <br>order food <a
-                            href="{{url('menu')}}" style="color:grey;">here</a></p>
+            <div class="card text-start" style="padding:0.5rem; border-radius:25px;height:17.5rem;max-width:70rem;min-width:70rem">
+                <div>
+                <h5 class="card-title" style="margin-left:2%; overflow-y:auto;">Ongoing Order</h5>
+                </div>
+                
+                <div class="order-list" style="max-height: 20rem; overflow-y: auto; padding-right: 10px;">
+                    @forelse ($keranjang as $index => $item)
+                        <div class="card mb-3" style="overflow: hidden;">
+                            <div class="row g-0">
+                                <div class="col-md-4">
+                                    <img src="{{ asset($item->menu->gambar_makanan) }}" class="img-fluid rounded-start" alt="{{ $item->menu->nama }}" style="min-width:70%; max-width:70%;">
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body" style="width:100%;">
+                                        <h5 class="card-title" style="font-size: 1.2vw;">{{ $item->menu->nama }}</h5>
+                                        <p class="card-text" style="font-size: 1vw;">Jumlah: {{ $item->jumlah_menu }}</p>
+                                        <p class="card-text" style="font-size: 1.1vw;">
+                                            <strong>Rp. {{ number_format($item->jumlah_menu * $item->menu->harga, 0, ',', '.') }}</strong>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    @empty
+                        <div class="card-body " style="padding-left:20vw;padding-right:20vw;height:14.5rem;">
+                            <p class="card-text text-center" style="font-size:3vw;color:grey;"><i
+                                    class="fa-solid fa-utensils"></i></p>
+                            <p class="card-text text-center" style="color:grey;">You haven't ordered anything .. <br>order food <a
+                                    href="{{url('menu')}}" style="color:grey;">here</a></p>
+                        </div>
+                    @endforelse
+
                 </div>
             </div>
         </div>
-        <form action="{{route('logout')}}" method="POST">
-            @csrf
-            <div class="item4 text-start">
-                <button type="submit" class="btn btn-light" style="font-size:2rem;padding:15px;border-radius:30px;">Logout <i class="bi bi-box-arrow-right"></i></button>
-            </div>
-        </form>
+
+        
     </div>
 
     <!-- Main Footer -->

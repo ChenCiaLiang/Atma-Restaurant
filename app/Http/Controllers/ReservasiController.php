@@ -10,7 +10,6 @@ class ReservasiController extends Controller
 {
     public function index()
     {
-        // You might want to pass data to the view (e.g., existing reservations)
         $reservasiList = Reservasi::all();
 
         return view('user.main.reservasi', compact('reservasiList'));

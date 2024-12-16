@@ -77,7 +77,6 @@ class MenuController extends Controller
                 'harga' => $request->harga,
                 'gambar_makanan' => $imagePath,
                 'jenis' => $request->jenis,
-                'jumlah_menu' => 0,
             ]);
             return redirect()->route('admin_menu')->with('success', 'Berhasil membuat menu');
         }

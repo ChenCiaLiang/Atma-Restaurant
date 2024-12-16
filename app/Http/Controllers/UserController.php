@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Keranjang;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
@@ -17,8 +18,14 @@ class UserController extends Controller
     public function index()
     {
         $user = auth('user')->user();
+        
+        $keranjang = Keranjang::with('menu')
+        ->where('id_user', $user->id_user)->where('status', 'OnGoing')
+        ->get();
 
-        return view('user/main/profile', compact('user'));
+        $history = Keranjang::where('id_user', $user->id_user)->where('status', 'Done')->get();
+
+        return view('user/main/profile', compact('user', 'keranjang', 'history'));
     }
 
     public function indexAll()
@@ -40,8 +47,8 @@ class UserController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'username' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'username' => 'required|string|max:255|unique:user',
+            'email' => 'required|string|email|max:255|unique:user',
             'password' => 'required|string',
             'no_telp' => 'required|string',
             'tgl_lahir' => 'required',

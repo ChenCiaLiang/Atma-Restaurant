@@ -100,6 +100,16 @@
             cursor: pointer;
             border-radius: 25px;
         }
+        .toast-success {
+            background-color: #28a745; /* Green background for success */
+            color: white;
+        }
+
+        /* Styling untuk Error Toast */
+        .toast-error {
+            background-color: #dc3545; /* Red background for error */
+            color: white;
+        }
     </style>
 </head>
 
@@ -141,6 +151,20 @@
             </div>
         </div>
     </nav>
+    <div class="toast-container position-fixed" style="top: 40px; right: 20px; z-index: 1050;">
+    <div id="toastMessage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-header">
+            
+            <strong id="toastTitle" class="me-auto">Notification</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+        </div>
+        <div id="message" class="toast-body">
+        </div>
+    </div>
+</div>
+
+</div>
+
     <div class="container " style="text-align:center;padding:5%;">
         <h3 style="color:white;font-family:Italianno;color:black;font-size:3vw;">Atmarestaurant Menu</h3>
 
@@ -176,15 +200,14 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $item->nama }}</h5>
                             <p class="card-text">Rp.{{ $item->harga }}</p>
-                            <div class="quantity-control d-flex align-items-center justify-content-center">
-                                <button class="btn-decrement" style="border:none;background-color:white;" onclick="minus()">
-                                    <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
-                                </button>
-                                <input type="number" id="jumlah_menu_{{ $item->id_menu }}" value="0" style="width: 3rem; text-align: center; border: none; font-size: 1.5vw;" readonly>
-                                <button class="btn-increment" style="border:none;background-color:white;" onclick="plus()">
-                                    <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
-                                </button>
-                            </div>
+                            <form action="{{ route('menu.addkeranjang') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="id_menu" value="{{ $item->id_menu}}">  
+                                <div class="quantity-control d-flex align-items-center justify-content-center">
+                                    <button type="submit" style ="background-color:rgba(247, 132, 5, 1);color:white"class="btn"><i class="bi bi-cart-plus-fill"></i> Add to cart</button>
+                                </div>
+                            </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -234,10 +257,41 @@
             <p>All rights reserved.</p>
         </div>
     </footer>
+
+    
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<script>
+
+    @php
+        $sessionMessage = session('success') ?? session('error');
+    @endphp
+
+    @if ($sessionMessage)
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var toastMessage = document.getElementById('toastMessage');
+                var toastTitle = document.getElementById('toastTitle');
+                var message = document.getElementById('message');
+                var toast = new bootstrap.Toast(toastMessage);
+
+                // Check if there's a success or error message
+                @if (session('success'))
+                    toastTitle.innerText = "Success";
+                    message.innerText = "{{ session('success') }}";
+                    toastMessage.classList.add('toast-success');  // Optional: Add custom class for success
+                @elseif (session('error'))
+                    toastTitle.innerText = "Error";
+                    message.innerText = "{{ session('error') }}";
+                    toastMessage.classList.add('toast-error');  // Optional: Add custom class for error
+                @endif
+
+                // Show toast
+                toast.show();
+            });
+        </script>
+    @endif
+    <script>
     document.addEventListener('DOMContentLoaded', function() {
         const incrementButtons = document.querySelectorAll('.btn-increment');
         const decrementButtons = document.querySelectorAll('.btn-decrement');
@@ -282,5 +336,4 @@
         document.getElementById('jumlah_menu').value = jumlahMenu;
     }
 </script>
-
 </html>

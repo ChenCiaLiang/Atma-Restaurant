@@ -54,6 +54,17 @@
             padding: 10px;
             text-align: center;
         }
+
+        .toast-success {
+            background-color: #28a745;
+            color: white;
+        }
+
+ 
+        .toast-error {
+            background-color: #dc3545;
+            color: white;
+        }
     </style>
 </head>
 
@@ -95,6 +106,17 @@
             </div>
         </div>
     </nav>
+    <div class="toast-container position-fixed" style="top: 40px; right: 20px; z-index: 1050;">
+        <div id="toastMessage" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                
+                <strong id="toastTitle" class="me-auto">Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div id="message" class="toast-body">
+    </div>
+        </div>
+    </div>
     <div style="text-align:center;margin-bottom:5%;margin-top:2%;font-family:Italianno;">
         <h1 style="font-size:5vw;">Pembayaran</h1>
     </div>
@@ -105,100 +127,66 @@
                     <p class="col text-start" style="font-size:1.5vw;"><strong>Your Order</strong></p>
                     <p class="col text-end" style="font-size:1.5vw;margin-right:1.5vw;"><strong>Remove All</strong></p>
                 </div>
-                    
+                    @forelse($keranjangs as $item)
                     <div class="card mb-3" >
                         <div class="row g-0">
                             <div class="col-md-4">
-                            <img src="{{ asset('image/bibimbap.png') }}" class="img-fluid rounded-start" alt="..." style="width:100%;height:100%;">
+                                <img src="{{ asset($item->menu->gambar_makanan) }}" class="img-fluid rounded-start" alt="..." style="min-width:100%;max-width:100%;">
                             </div>
                             <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title text-start"style="font-size:1vw;">Bibimbapa</h5>
-                                <div class="d-flex justify-content-between">
-                                    <p class="card-text text-start"style="font-size:1vw;">Rp80.000</p>
-                                    <i class="bi bi-x-circle" style="font-size:2vw;color:red;"></i>
+                                <div class="card-body">
+                                    <h5 class="card-title text-start"style="font-size:1vw;">{{$item->menu->nama}}</h5>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="card-text text-start"style="font-size:1vw;">Rp. {{$item->menu->harga}}</p>
+                                        <form action="{{route('keranjang.delete', $item->id_keranjang)}}" method ="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="submit"class="bi bi-x-circle" style="font-size:2vw;color:red;background-color:transparent;border:0"></button>
+                                        </form>
+                                    </div>
+                                    
                                 </div>
-                                
-                            </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="card mb-3">
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                            <img src="{{ asset('image/ramen.png') }}" class="img-fluid rounded-start" alt="..." style="width:100%;height:100%;">
-                            </div>
-                            <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title text-start"style="font-size:1vw;">Sauted Pork Ramen</h5>
-                                <div class="d-flex justify-content-between">
-                                    <p class="card-text text-start"style="font-size:1vw;">Rp70.000</p>
-                                    <i class="bi bi-x-circle" style="font-size:2vw;color:red;"></i>
-                                </div>
-                                
-                            </div>
-                            </div>
-                        </div>
+                    @empty
+                    <div class="alert alert-danger">
+                        Data menu belum tersedia
                     </div>
-                    
-
-                    <div class="card mb-3" >
-                        <div class="row g-0">
-                            <div class="col-md-4">
-                            <img src="{{ asset('image/thai.png') }}" class="img-fluid rounded-start" alt="..." style="width:100%;height:100%;">
-                            </div>
-                            <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title text-start"style="font-size:1vw;">Thai Iced Tea</h5>
-                                <div class="d-flex justify-content-between">
-                                    <p class="card-text text-start"style="font-size:1vw;">Rp25.000</p>
-                                    <i class="bi bi-x-circle" style="font-size:2vw;color:red;"></i>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-
+                @endforelse
             </div>
 
             <div style="padding:3%;">
                 <p style="text-align:center;font-size:1.5vw;"><strong>Meja No.14</strong></p>
-                
+                    
                     <div class="card" style="width: 30vw;">
                         <div class="card-body">
                             <h5 class="card-title text-start" style="font-size:1vw;"><strong>Pesanan</strong></h5>
-                            <div class="row">
-                                <p class="col card-text text-start" style="font-size:1vw;">1 Bibimbap</p>
-                                <p class="col card-text text-end" style="font-size:1vw;">Rp80.000</p>
-                            </div>
-
-                            <div class="row">
-                                <p class="col card-text text-start" style="font-size:1vw;">1 Sauted Pork Ramen</p>
-                                <p class="col card-text text-end" style="font-size:1vw;">Rp70.000</p>
-                            </div>
-
-                            <div class="row">
-                                <p class="col card-text text-start" style="font-size:1vw;">1 Thai Iced Tea</p>
-                                <p class="col card-text text-end" style="font-size:1vw;">Rp25.000</p>
-                            </div>
+                            @forelse($keranjangs as $item)
+                                <div class="row">
+                                    <p class="col card-text text-start" style="font-size:1vw;">{{$item->jumlah_menu}} {{$item->menu->nama}}</p>
+                                    <p class="col card-text text-end" style="font-size:1vw;">Rp. {{ number_format($item->jumlah_menu * $item->menu->harga, 0, ',', '.') }}</p>
+                                </div>
+                                @empty
+                                <div class="alert alert-danger">
+                                    Data menu belum tersedia
+                                </div>
+                            @endforelse
 
                             <hr>
-
                             <div class="row">
                                 <p class="col card-text text-start" style="font-size:1vw;">Subtotal</p>
-                                <p class="col card-text text-end" style="font-size:1vw;">Rp183.000</p>
+                                <p class="col card-text text-end" style="font-size:1vw;">Rp. {{ number_format($subtotal, 0, ',', '.') }}</p>
                             </div>
 
                             <div class="row">
-                                <p class="col card-text text-start" style="font-size:1vw;">Tax</p>
-                                <p class="col card-text text-end" style="font-size:1vw;">Rp18.300</p>
+                                <p class="col card-text text-start" style="font-size:1vw;">Tax (10%)</p>
+                                <p class="col card-text text-end" style="font-size:1vw;">Rp. {{ number_format($tax, 0, ',', '.') }}</p>
                             </div>
 
                             <div class="row">
                                 <p class="col card-text text-start" style="font-size:1vw;"><strong>Total</strong></p>
-                                <p class="col card-text text-end" style="font-size:1vw;"><strong>Rp201.300</strong>
-                                </p>
+                                <p class="col card-text text-end" style="font-size:1vw;"><strong>Rp. {{ number_format($total, 0, ',', '.') }}</strong></p>
                             </div>
                         </div>
                     </div>
@@ -210,24 +198,25 @@
 
     
     <div class="container mt-5 d-flex justify-content-between" style="max-width:68%;">
-       <div>
-             <p class="text-start" style="font-size:1vw;"><strong>Pilih Pembayaran</strong></p>
-       </div>
+        <div>
+            <p class="text-start" style="font-size:1vw;"><strong>Pilih Pembayaran</strong></p>
+        </div>
 
-       <div>
+        <div>
+            
             <div class="container d-flex gap-2">
                 <a href="{{url('qris')}}">
                     <button
-                        style="width:8vw;height:5vh;border-radius:25px;margin-right:3%;background-color:#F78405;color:white;font-size:0.8vw;border:none;">QRIS
+                        style="width:8vw;height:5vh;border-radius:25px;margin-right:3%;background-color:#F78405;color:white;font-size:0.8vw;border:none;" @if($keranjangs->isEmpty()) disabled @endif>QRIS
                     </button>
                 </a>
                 <a href="{{url('virtual')}}" >
                     <button
-                        style="width:8vw;height:5vh;border-radius:25px;background-color:#F78405;color:white;font-size:0.8vw;text-decoration:none;border:none;">Virtual Account
+                        style="width:8vw;height:5vh;border-radius:25px;background-color:#F78405;color:white;font-size:0.8vw;text-decoration:none;border:none;" @if($keranjangs->isEmpty()) disabled @endif >Virtual Account
                     </button>
                 </a>    
             </div>
-       </div>
+        </div>
     </div>
 
     <!-- Main Footer -->
@@ -273,4 +262,32 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
+    @php
+        $sessionMessage = session('success') ?? session('error');
+    @endphp
+
+    @if ($sessionMessage)
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var toastMessage = document.getElementById('toastMessage');
+                var toastTitle = document.getElementById('toastTitle');
+                var message = document.getElementById('message');
+                var toast = new bootstrap.Toast(toastMessage);
+
+                // Check if there's a success or error message
+                @if (session('success'))
+                    toastTitle.innerText = "Success";
+                    message.innerText = "{{ session('success') }}";
+                    toastMessage.classList.add('toast-success');  
+                @elseif (session('error'))
+                    toastTitle.innerText = "Error";
+                    message.innerText = "{{ session('error') }}";
+                    toastMessage.classList.add('toast-error');  // Optional: Add custom class for error
+                @endif
+
+                // Show toast
+                toast.show();
+            });
+        </script>
+    @endif
 </html>

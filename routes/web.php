@@ -8,6 +8,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ReservasiController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\PesananController;
+use App\Http\Controllers\KeranjangController;
+use App\Models\Reservasi;
+use App\Models\Keranjang;
+use App\Http\Controllers\HistoryController;
 
 
 
@@ -48,7 +52,7 @@ Route::middleware(['auth:user'])->group(function () {
 
     Route::post('reservasi', [ReservasiController::class, 'store'])->name('reservasi.create');
 
-    Route::get('menu', [MenuController::class, 'indexUser']);
+    Route::get('menu', [MenuController::class, 'indexUser'])->name('menu');
     Route::get('menu/{jenis}', [MenuController::class, 'showMenu']);
 
     Route::get('pembayaran/user', [PembayaranController::class, 'indexUser']);
@@ -58,17 +62,52 @@ Route::middleware(['auth:user'])->group(function () {
     Route::get('pesanan/store', [PesananController::class, 'store']);
     //---------------------------------------------------------------------------------------------------------------------------------
 
+    Route::post('addmenu', [KeranjangController::class, 'store'])->name('menu.addkeranjang');
+    Route::post('addhistory', [KeranjangController::class, 'storeHistory'])->name('history.store');
+
     Route::get('edit', function () {
         return view('/user/main/edit');
     });
 
     Route::get('reservasi', function () {
-        return view('/user/main/reservasi');
+        $user = auth('user')->user();
+
+        $reservasi = Reservasi::where('id_user', $user->id_user)->first();
+
+        
+        if ($reservasi && $reservasi->tanggal_reservasi < now()) {
+            $reservasi->delete();
+            return redirect()->route('reservasi.create')->with('success', 'Reservasi sudah lewat dan telah dihapus.');
+        }
+
+
+        if (!$reservasi) {
+            return view('/user/main/reservasi');
+        }
+
+        return redirect('menu');
+
     });
 
     Route::get('pembayaran', function () {
-        return view('/user/main/pembayaran');
-    });
+        $userId = auth('user')->user()->id_user;
+
+        $keranjangs = Keranjang::with('menu')
+        ->where('id_user', $userId)->where('status', 'OnGoing')
+        ->get();
+
+        $subtotal = $keranjangs->sum(function ($item) {
+            return $item->jumlah_menu * $item->menu->harga;
+        });
+
+        $tax = $subtotal * 0.10;
+
+        $total = $subtotal + $tax;
+
+        return view('/user/main/pembayaran', compact('keranjangs', 'subtotal', 'tax', 'total'));
+    })->name('pembayaran');
+
+    Route::delete('deleteKeranjang/{id_keranjang}', [KeranjangController::class, 'delete'])->name('keranjang.delete');
 
     Route::get('qris', function () {
         return view('/user/main/qris');
@@ -80,7 +119,7 @@ Route::middleware(['auth:user'])->group(function () {
 
     Route::get('pembayaranBerhasil', function () {
         return view('Notif.pembayaranBerhasil');
-    });
+    })->name('pembayaranBerhasil');
 
     Route::get('pemesanan', function () {
         return view('Notif.pemesanan');
@@ -96,13 +135,6 @@ Route::middleware(['auth:admin'])->group(function () {
         return view('Admin.admin_dashboard_content');
     });
 
-    // Route::get('admin_user', function () {
-    //     return view('Admin.admin_user');
-    // });
-
-    // Route::get('Admin/admin_menu', function () {
-    //     return view('Admin.admin_menu');
-    // })->name('admin_menu');
 
     Route::get('admin_menu', [MenuController::class, 'indexAdmin'])->name('admin_menu');
     Route::post('menu_store', [MenuController::class, 'store'])->name('menu.store');
