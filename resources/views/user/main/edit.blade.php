@@ -89,38 +89,44 @@
         </div>
     </nav>
 
+    <form action="{{ route('user.updateProfile') }}" method="POST" enctype="multipart/form-data">
+                @csrf
     <div class="grid-container justify-content-center align-content-center">
         <div class="item1">
             <div class="card align-items-center"
                 style="padding:5vh;border-radius:25px;background-color:#F0DAA1;color:white;border:none;">
                 <h1 class="card-title">Edit Profile</h1>
-                <img src="{{ asset('image/shin.png') }}" class="rounded circle" style="width:15vw;height:30vh;"
-                    alt="...">
+                <img src="{{ asset($user->fotoPath) }}" class="rounded-circle" style="width:15vw;height:30vh;" alt="...">
+
                 <div class="card-body text-start">
+                    <input type="file" name='foto'>
                     <p class="card-text m-0" style="text-decoration:underline;color:grey;">Ganti Foto Profile</p>
                 </div>
             </div>
 
         </div>
         <div class="item2" style="text-align:start;padding-top:6vh;">
-            <form action="{{ route('user.updateProfile') }}" method="POST" enctype="multipart/form-data">
+            @error('username')
+                <div class="alert alert-danger"> X {{ $message }}</div>
+            @enderror
+            
                 <p style="padding-left:1vw;margin:0;"><strong>Update Username</strong></p>
                 <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Username" 
+                    <input type="text" class="form-control" id="username" placeholder="Username" name="username"
                         style="border-radius:50px;width:30vw;padding-left:2vw;"  value="{{ $user->username }}" required>
                     <label for="floatingInput" style="padding-left:2vw;">Username</label>
                 </div>
 
                 <p style="padding-left:1vw;margin:0;"><strong>Email</strong></p>
                 <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="email@gmail.com"
+                    <input type="text" class="form-control" id="email" placeholder="email@gmail.com" name="email"
                         style="border-radius:50px;width:30vw;padding-left:2vw;" value="{{ $user->email }}" required>
                     <label for="floatingInput" style="padding-left:2vw;">Email</label>
                 </div>
 
                 <p style="padding-left:1vw;margin:0;"><strong>Nomor Telepon</strong></p>
                 <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Nomor telepon"
+                    <input type="text" class="form-control" id="no_telp" placeholder="Nomor telepon" name="no_telp"
                         style="border-radius:50px;width:30vw;padding-left:2vw;" value="{{ $user->no_telp }}" required>
                     <label for="floatingInput" style="padding-left:2vw;">Nomor Telepon</label>
                 </div>
@@ -131,9 +137,11 @@
                         <strong>Confirm</strong>
                     </button>
                 </div>
-            </form>
+            
         </div>
     </div>
+
+    </form>
 
     <!-- Main Footer -->
     <footer class="main-footer text-center" style="background-color: #F78405; color: #ffffff">
