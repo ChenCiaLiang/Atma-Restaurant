@@ -80,7 +80,36 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // User chart
         var userData = @json($userCounts);
+        new Chart(document.getElementById("userChart"), {
+            type: "bar",
+            data: {
+                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+                datasets: [{
+                    label: "User Registrations",
+                    backgroundColor: "#FB9D14",
+                    hoverBackgroundColor: "#EE7804",
+                    data: userData,
+                    barPercentage: .75,
+                    categoryPercentage: .5
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false
+                        },
+                        stacked: false
+                    }],
+                    xAxes: [{
+                        stacked: false,
+                        gridLines: {
+                            color: "transparent"
+                        }
+                    }]
+                }
+            }
+        });
     </script>
 @endsection

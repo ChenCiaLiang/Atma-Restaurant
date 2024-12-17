@@ -137,10 +137,7 @@ Route::middleware(['auth:admin'])->group(function () {
         return view('Admin.admin_dashboard');
     });
 
-    Route::get('admin_dashboard_content', function () {
-        return view('Admin.admin_dashboard_content');
-    });
-
+    Route::get('admin_dashboard_content', [AdminController::class, 'content'])->name('admin_dashboard_content');
 
     Route::get('admin_menu', [MenuController::class, 'indexAdmin'])->name('admin_menu');
     Route::post('menu_store', [MenuController::class, 'store'])->name('menu.store');
