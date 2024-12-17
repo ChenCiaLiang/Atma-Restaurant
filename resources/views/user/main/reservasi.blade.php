@@ -68,28 +68,26 @@
 
         </div>
 
-        <form action="{{ url('pemesananBerhasil') }}">
-
+        <form action="{{ route('reservasi.create') }}" method="POST">
+            @csrf
             <div class="form-group">
                 <label for="seat">Number of People</label>
-                <select class="form-control" id="seat" name="seat" reqired style="height: 7vh;">
-                    <option>1 People</option>
-                    <option>2 People</option>
-                    <option>3 People</option>
-                    <option>4 People</option>
-                    <option>5 People</option>
-                    <option>6+ People</option>
+                <select class="form-select" id="seat" name="jumlah_orang" reqired style="height: 7vh;">
+                    <option value="1">1 People</option>
+                    <option value="2">2 People</option>
+                    <option value="3">3 People</option>
+                    <option value="4">4 People</option>
                 </select>
             </div>
 
             <div class="form-group" style="margin-top:3%;">
                 <label for="tanggal">Date</label>
-                <input type="date" class="form-control" id="tanggal" required style="height: 7vh;">
+                <input type="date" class="form-control" id="tanggal" name="tanggal_reservasi" required style="height: 7vh;">
             </div>
 
             <div class="form-group" style="margin-top:3%;">
                 <label for="jam">Time</label>
-                <input type="time" class="form-control" id="floatingInput" required style="height: 7vh;">
+                <input type="time" class="form-control" id="floatingInput" name="waktu_reservasi" required style="height: 7vh;">
             </div>
 
             <div style="display:flex;justify-content:center;align-items:center;margin-top:4%;">

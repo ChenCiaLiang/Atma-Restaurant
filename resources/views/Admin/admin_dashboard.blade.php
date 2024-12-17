@@ -211,74 +211,9 @@
     </script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // toggle sidebar
         const toggler = document.querySelector(".toggler-btn");
         toggler.addEventListener("click", function() {
             document.querySelector("#sidebar").classList.toggle("collapsed");
-        });
-
-        // Earnings chart
-        new Chart(document.getElementById("earningsChart"), {
-            type: 'line',
-            data: {
-                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                datasets: [{
-                    label: 'Earnings ($)',
-                    fill: true,
-                    borderColor: 'blue',
-                    tension: 0.3,
-                    data: [2500, 3000, 2000, 3500, 4000, 3700, 3500, 3400, 3100, 2500, 3250, 5000]
-                }]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        reverse: true,
-                        gridLines: {
-                            color: "rgba(0,0,0,0.05)"
-                        }
-                    }],
-                    yAxes: [{
-                        borderDash: [5, 5],
-                        gridLines: {
-                            color: "rgba(0,0,0,0)",
-                            fontColor: "#F0DAA1"
-                        }
-                    }]
-                }
-            }
-        });
-
-        // User chart
-        new Chart(document.getElementById("userChart"), {
-            type: "bar",
-            data: {
-                labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                datasets: [{
-                    label: "User",
-                    backgroundColor: "#FB9D14",
-                    hoverBackgroundColor: "#EE7804",
-                    data: [69, 66, 24, 48, 52, 51, 44, 53, 62, 79, 51, 68],
-                    barPercentage: .75,
-                    categoryPercentage: .5
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        gridLines: {
-                            display: false
-                        },
-                        stacked: false
-                    }],
-                    xAxes: [{
-                        stacked: false,
-                        gridLines: {
-                            color: "transparent"
-                        }
-                    }]
-                }
-            }
         });
     </script>
 </body>

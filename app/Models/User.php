@@ -21,18 +21,28 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-    
         'username',
         'email',
         'password',
         'no_telp',
         'tgl_lahir',
         'foto',
+        'tanggal_register',
     ];
 
     public function reservasi()
     {
-        return $this->hasMany(Reservasi::class, 'id_user', 'id_user');
+        return $this->hasMany(Reservasi::class);
+    }
+
+    public function pemesanan()
+    {
+        return $this->hasMany(Pemesanan::class);
+    }
+
+    public function history()
+    {
+        return $this->hasMany(History::class);
     }
 
     /**

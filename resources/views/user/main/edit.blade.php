@@ -12,9 +12,11 @@
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+        rel="stylesheet">
     <style>
         .grid-container {
             display: grid;
@@ -39,7 +41,7 @@
         .item2 {
             grid-area: m2;
         }
-        
+
         .main-footer {
             background-color: #f8f9fa;
             border-top: 1px solid #dee2e6;
@@ -52,7 +54,8 @@
 <body style="background-color:#F0DAA1;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #F78405;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url('/') }}" style="font-family: Italianno; font-size: 2rem; color: white;">Atma
+            <a class="navbar-brand" href="{{ url('/') }}"
+                style="font-family: Italianno; font-size: 2rem; color: white;">Atma
                 Restaurant</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -69,12 +72,11 @@
                             href="{{ url('reservasi') }}"><strong>Reserve</strong></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: white;"
-                            href="#"><strong>Menu</strong></a>
+                        <a class="nav-link" style="color: white;" href="#"><strong>Menu</strong></a>
                     </li>
 
                     <li class="nav-item">
-                    <a class="nav-link" style="color: white; display: inline-block; border-bottom: 1px solid white;"
+                        <a class="nav-link" style="color: white; display: inline-block; border-bottom: 1px solid white;"
                             href="{{ url('profile') }}">
                             <span class="bi bi-person-circle"></span>
                         </a>
@@ -83,45 +85,56 @@
                     <li class="nav-item">
                         <a class="nav-link bi bi-cart-fill" style="color: white;" href="{{ url('pembayaran') }}"></a>
                     </li>
-
                 </ul>
             </div>
         </div>
     </nav>
 
-    <div class="grid-container justify-content-center align-content-center">
-        <div class="item1">
-            <div class="card align-items-center"
-                style="padding:5vh;border-radius:25px;background-color:#F0DAA1;color:white;border:none;">
-                <h1 class="card-title">Edit Profile</h1>
-                <img src="{{ asset('image/shin.png') }}" class="rounded circle" style="width:15vw;height:30vh;"
-                    alt="...">
-                <div class="card-body text-start">
-                    <p class="card-text m-0" style="text-decoration:underline;color:grey;">Ganti Foto Profile</p>
-                </div>
-            </div>
+    <form action="{{ route('user.updateProfile', $user->id_user) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <div class="grid-container justify-content-center align-content-center">
+            <div class="item1">
+                <div class="card align-items-center"
+                    style="padding:5vh;border-radius:25px;background-color:#F0DAA1;color:white;border:none;">
+                    <h1 class="card-title">Edit Profile</h1>
+                    <img id="imagePreview" src="{{ asset($user->foto ?? 'user_profile/default.jpeg') }}" class="rounded-circle"
+                        style="width:15vw;height:30vh;" alt="...">
 
-        </div>
-        <div class="item2" style="text-align:start;padding-top:6vh;">
-            <form action="{{ url('profile') }}">
+                    <div class="card-body text-start">
+                        <label for="fotoInput" class="btn btn-warning" style="cursor: pointer;">
+                            Upload New Photo
+                        </label>
+                        <input type="file" name="foto" id="fotoInput" onchange="previewFile()" accept="image/*"
+                            style="display: none;">
+                    </div>
+                </div>
+
+            </div>
+            <div class="item2" style="text-align:start;padding-top:6vh;">
+                @error('username')
+                    <div class="alert alert-danger"> X {{ $message }}</div>
+                @enderror
+
                 <p style="padding-left:1vw;margin:0;"><strong>Update Username</strong></p>
                 <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Username"
-                        style="border-radius:50px;width:30vw;padding-left:2vw;">
+                    <input type="text" class="form-control" id="username" placeholder="Username" name="username"
+                        style="border-radius:50px;width:30vw;padding-left:2vw;" value="{{ $user->username }}" required>
                     <label for="floatingInput" style="padding-left:2vw;">Username</label>
                 </div>
 
                 <p style="padding-left:1vw;margin:0;"><strong>Email</strong></p>
                 <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="email@gmail.com"
-                        style="border-radius:50px;width:30vw;padding-left:2vw;">
+                    <input type="text" class="form-control" id="email" placeholder="email@gmail.com"
+                        name="email" style="border-radius:50px;width:30vw;padding-left:2vw;"
+                        value="{{ $user->email }}" required>
                     <label for="floatingInput" style="padding-left:2vw;">Email</label>
                 </div>
 
                 <p style="padding-left:1vw;margin:0;"><strong>Nomor Telepon</strong></p>
                 <div class="form-floating mb-2">
-                    <input type="text" class="form-control" id="floatingInput" placeholder="Nomor telepon"
-                        style="border-radius:50px;width:30vw;padding-left:2vw;">
+                    <input type="text" class="form-control" id="no_telp" placeholder="Nomor telepon"
+                        name="no_telp" style="border-radius:50px;width:30vw;padding-left:2vw;"
+                        value="{{ $user->no_telp }}" required>
                     <label for="floatingInput" style="padding-left:2vw;">Nomor Telepon</label>
                 </div>
 
@@ -131,9 +144,11 @@
                         <strong>Confirm</strong>
                     </button>
                 </div>
-            </form>
+
+            </div>
         </div>
-    </div>
+
+    </form>
 
     <!-- Main Footer -->
     <footer class="main-footer text-center" style="background-color: #F78405; color: #ffffff">
@@ -175,7 +190,21 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function previewFile() {
+            const file = document.getElementById('fotoInput').files[0];
+            const imagePreview = document.getElementById('imagePreview');
 
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    imagePreview.src = event.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 </body>
 
 </html>

@@ -80,10 +80,12 @@
         <p style="font-size:2vw;"><strong>Nomor Pembayaran:</strong></p>
         <div class="d-flex justify-content-between" style="background-color: #F78405;width:40%;border-radius:25px;padding-left:2px;padding-right:2%;margin-left:5%;">
           <p style="font-size:1.5vw;margin-left:8%;color:white;margin-top:10px;" id="VA"> A12345678 </p>
-          <a href="{{url('pembayaranBerhasil')}}" style="margin-top:6px;">
-            <i class="bi bi-copy " style="font-size:1.5vw;margin-top:5px;color:white;cursor:pointer;" onclick="copyText()"></i>
-          </a>
 
+          <form action="{{route('history.store')}}" method="POST">
+                  @csrf
+                  <button type="submit"  onclick="copyText()" style="border:none;margin-top:6px;background-color:transparent"><i class="bi bi-copy " style="font-size:1.5vw;margin-top:5px;color:white;cursor:pointer;" onclick="copyText()"></i></button>
+              </form> 
+      
         </div>
         
     </div>
