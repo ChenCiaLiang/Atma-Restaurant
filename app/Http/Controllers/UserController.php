@@ -30,7 +30,7 @@ class UserController extends Controller
 
     public function indexAll()
     {
-        $user = User::paginate(3);
+        $user = User::orderBy('id_user', 'desc')->paginate(3);
         $userCounts = [];
 
         for ($month = 1; $month <= 12; $month++) {

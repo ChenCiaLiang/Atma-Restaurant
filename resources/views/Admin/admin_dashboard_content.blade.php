@@ -32,7 +32,6 @@
                             @else
                                 <p class="card-text" style="color:rgb(255, 0, 0);">-{{ $content['reservasi'] }}</p>
                             @endif
-                            <p class="mb-0">Since last month</p>
                         </div>
                     </div>
                 </div>
