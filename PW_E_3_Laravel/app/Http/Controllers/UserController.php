@@ -64,6 +64,7 @@ class UserController extends Controller
                 'no_telp' => $request->no_telp,
                 'tgl_lahir' => $request->tgl_lahir,
                 'foto' => $fotoPath,
+                'tanggal_register' => now(),
             ]);
             return redirect()->intended('login')->with('success', 'Berhasil membuat user');
         } catch (Exception $e) {
