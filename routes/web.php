@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\Authenticate;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
@@ -46,9 +47,15 @@ Route::get('login', function () {
 
 Route::middleware(['auth:user'])->group(function () {
 
-    Route::get('profile', [UserController::class, 'index']);
+    Route::get('profile', [UserController::class, 'index'])->name('user.profile');
+    
+    // Route::get('edit', function () {
+    //     $userId = Auth::id();
+    //     $user = User::find($userId);
+    //     return view('/user/main/edit', compact( 'user'));
+    // });
 
-    Route::post('/user/update-profile', [UserController::class, 'updateProfile'])->name('user.updateProfile');
+    Route::post('updateProfile/{id_user}', [UserController::class, 'updateProfile'])->name('user.updateProfile');
 
     Route::post('reservasi', [ReservasiController::class, 'store'])->name('reservasi.create');
 
@@ -60,20 +67,16 @@ Route::middleware(['auth:user'])->group(function () {
 
     Route::get('pesanan/all', [PesananController::class, 'indexAll']);
     Route::get('pesanan/store', [PesananController::class, 'store']);
-    //---------------------------------------------------------------------------------------------------------------------------------
 
     Route::post('addmenu', [KeranjangController::class, 'store'])->name('menu.addkeranjang');
     Route::post('addhistory', [KeranjangController::class, 'storeHistory'])->name('history.store');
 
-    Route::get('edit', function () {
-        return view('/user/main/edit');
-    });
+    Route::get('edit/{id_user}', [UserController::class, 'edit'])->name('user.edit');
 
     Route::get('reservasi', function () {
         $user = auth('user')->user();
 
         $reservasi = Reservasi::where('id_user', $user->id_user)->first();
-
         
         if ($reservasi && $reservasi->tanggal_reservasi < now()) {
             $reservasi->delete();
@@ -108,6 +111,8 @@ Route::middleware(['auth:user'])->group(function () {
     })->name('pembayaran');
 
     Route::delete('deleteKeranjang/{id_keranjang}', [KeranjangController::class, 'delete'])->name('keranjang.delete');
+    //---------------------------------------------------------------------------------------------------------------------------------
+
 
     Route::get('qris', function () {
         return view('/user/main/qris');

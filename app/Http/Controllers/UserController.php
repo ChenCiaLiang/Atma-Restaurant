@@ -18,10 +18,10 @@ class UserController extends Controller
     public function index()
     {
         $user = auth('user')->user();
-        
+
         $keranjang = Keranjang::with('menu')
-        ->where('id_user', $user->id_user)->where('status', 'OnGoing')
-        ->get();
+            ->where('id_user', $user->id_user)->where('status', 'OnGoing')
+            ->get();
 
         $history = Keranjang::where('id_user', $user->id_user)->where('status', 'Done')->get();
 
@@ -93,44 +93,46 @@ class UserController extends Controller
         }
     }
 
-    public function updateProfile(Request $request)
+    function edit($id_user)
     {
-        // Ambil pengguna yang sedang login
-        $user = auth('user')->user();
+        $user = User::findOrFail($id_user);
+        return view('user/main/edit', compact('user'));
+    }
 
-        // Validasi data input
+    public function updateProfile(Request $request, $id_user)
+    {
+        $user = User::findOrFail($id_user);
+        
         $request->validate([
-            'username' => 'required|string|max:255|unique:users,username,' . $user->id_user,
-            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id_user,
+            'username' => 'required|string|max:255|unique:user,username,' . $user->id_user . ',id_user',
+            'email' => 'required|string|email|max:255|unique:user,email,' . $user->id_user . ',id_user',
             'no_telp' => 'required|string|max:15',
-            'tgl_lahir' => 'required|date|before:today',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-
-        // Path default untuk foto (jika tidak ada perubahan)
-        $fotoPath = $user->foto;
-
-        // Periksa apakah foto baru diunggah
+        
         if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-            // Hapus foto lama jika ada
-            if (!is_null($user->foto) && File::exists(public_path('storage/' . $user->foto))) {
-                File::delete(public_path('storage/' . $user->foto));
+            if (!is_null($user->foto) && File::exists(public_path('user_profile/' . $user->foto))) {
+                File::delete(public_path('user_profile/' . $user->foto));
             }
-
-            // Simpan foto baru ke direktori storage
-            $fotoPath = $request->file('foto')->store('user_profile', 'public');
+            $file = $request->file('foto');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('user_profile'), $fileName);
+            $fotoPath = 'user_profile/' . $fileName;
+            
+            $user->update([
+                'username' => $request->username,
+                'email' => $request->email,
+                'no_telp' => $request->no_telp,
+                'foto' => $fotoPath,
+            ]);
+        }else{
+            $user->update([
+                'username' => $request->username,
+                'email' => $request->email,
+                'no_telp' => $request->no_telp,
+            ]);
         }
 
-        // Update data pengguna
-        $user->update([
-            'username' => $request->username,
-            'email' => $request->email,
-            'no_telp' => $request->no_telp,
-            'tgl_lahir' => $request->tgl_lahir,
-            'foto' => $fotoPath,
-        ]);
-
-        // Redirect ke halaman profil dengan pesan sukses
         return redirect()->route('user.profile')->with('success', 'Profil berhasil diperbarui.');
     }
 
