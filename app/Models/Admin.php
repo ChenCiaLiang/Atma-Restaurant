@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class Admin extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
     public $timestamps = false;
-    protected $table = 'user';
-    protected $primaryKey = 'id_user';
+    protected $table = 'admin';
+    protected $primaryKey = 'id_admin';
 
     /**
      * The attributes that are mass assignable.
@@ -21,19 +21,9 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-    
         'username',
-        'email',
         'password',
-        'no_telp',
-        'tgl_lahir',
-        'foto',
     ];
-
-    public function reservasi()
-    {
-        return $this->hasMany(Reservasi::class, 'id_user', 'id_user');
-    }
 
     /**
      * The attributes that should be hidden for serialization.

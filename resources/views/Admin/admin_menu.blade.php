@@ -40,23 +40,24 @@
                         </div>
                         <div class="row">
                             <div class="container-fluid d-flex flex-column justify-content-center p-0">
-                                <form class="container-fluid p-0">
+                                <form class="container-fluid p-0" action="{{route('menu.store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="ms-5">
                                         <p class="m-0" style="padding-left:1vw;"><strong>Nama Menu</strong></p>
                                         <div class="form-floating mb-2">
-                                            <input type="text" class="form-control" id="namaMenu" placeholder="Nama Menu" style="width:60%;" required>
+                                            <input type="text" class="form-control" id="namaMenu" placeholder="Nama Menu" style="width:60%;" name="nama"required>
                                             <label for="namaMenu" style="padding-left:2vw;">Nama Menu</label>
                                         </div>
 
                                         <p style="padding-left:1vw;margin:0;margin-top:2vh;"><strong>Harga</strong></p>
                                         <div class="form-floating mb-2">
-                                            <input type="text" class="form-control" id="harga" placeholder="Harga" style="width:60%;" required>
+                                            <input type="text" class="form-control" id="harga" placeholder="Harga" style="width:60%;" name="harga"required>
                                             <label for="harga" style="padding-left:2vw;">Harga</label>
                                         </div>
 
                                         <p style="padding-left:1vw;margin:0;margin-top:2vh;">Gambar</p>
                                         <div class="form-floating-fluid">
-                                            <input type="file" class="form-control" id="gambar" placeholder="Gambar" style="width:80%;" required>
+                                            <input type="file" class="form-control" id="gambar" placeholder="Gambar" style="width:80%;" name="gambar_makanan" required>
                                         </div>
                                     </div>
 
@@ -79,37 +80,51 @@
             {{-- Recently Added Menu --}}
             <div class="row mt-4">
                 <div class="col-12">
-                    <div class="card container-fluid p-3" style="background-color: #ffffff">
+                    <div class="card container-fluid p-3" style="background-color: #ffffff" >
                         <div class="row m-3">
                             <h5>Recently Added Menu</h5>
                         </div>
-                        @for ($i = 0; $i < 3; $i++)
-                            <div class="card recentMenuCard my-2 p-0 mx-5">
+                        @forelse ($menu as $item)
+                        
+                        <div class="card recentMenuCard my-2 p-0 mx-5"style="height:50%">
                                 <div class="row recentMenuRow">
                                     <div class="col d-flex justify-content-start">
-                                        <img src="{{ asset('image/japchae.png') }}" class="img-fluid">
+                                        <img src="{{asset($item->gambar_makanan)}}" class="img-fluid" style="object-fit:cover; border-radius:8px">
                                     </div>
                                     <div class="col">
                                         <div class="row">
-                                            <h3 class="fw-bold my-4">Japchae</h3>
+                                            <h3 class="fw-bold my-4">{{$item->nama}}</h3>
                                         </div>
-                                        <div class="row my-3">
+                                        <!-- <div class="row my-3">
                                             <h4>Category: <Strong>Noodles</Strong></h4>
-                                        </div>
+                                        </div> -->
                                         <div class="row">
-                                            <h4>Price: <Strong>Rp 85.000</Strong></h4>
+                                            <h4>Price: <Strong>{{$item->harga}}</Strong></h4>
+                                        </div>
+
+                                        <div class="row">
+                                            <h4>ID: <Strong>{{$item->id_menu}}</Strong></h4>
                                         </div>
                                     </div>
                                     <div class="col d-flex justify-content-end align-items-end me-4 mb-2">
-                                        <a href="{{ url('admin_editMenu') }}">
-                                            <button class="btn btn-success rounded-pill" style="color: rgb(255, 255, 255);">
-                                                EDIT
-                                            </button>
+                                        <a class="btn btn-success rounded-pill" style="color: rgb(255, 255, 255);" href="{{ route('menu.edit', $item->id_menu) }}">
+                                            EDIT
                                         </a>
+                                        <form action="{{route('menu.delete', $item->id_menu)}}" method="POST">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-danger rounded-pill ms-2" style="color: rgb(255, 255, 255);" type="submit">
+                                                DELETE
+                                            </button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        @endfor
+                        @empty
+                            <div class="alert alert-danger">
+                                Data menu belum tersedia
+                            </div>
+                        @endforelse
                     </div>
                 </div>
             </div>

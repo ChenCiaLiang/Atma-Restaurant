@@ -58,7 +58,7 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse text-center" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link active" style="color: white"
@@ -69,12 +69,21 @@
                             href="{{ url('reservasi') }}"><strong>Reserve</strong></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" style="color: white;" href="{{ url('menu') }}"><strong>Menu</strong></a>
+                        <a class="nav-link" style="color: white;"
+                            href="#"><strong>Menu</strong></a>
                     </li>
+
                     <li class="nav-item">
-                        <a class="nav-link" style="color: white;" href="#"><i class="bi bi-person-circle"
-                                style="border-bottom:1px;"></i></a>
+                    <a class="nav-link" style="color: white; display: inline-block; border-bottom: 1px solid white;"
+                            href="{{ url('profile') }}">
+                            <span class="bi bi-person-circle"></span>
+                        </a>
                     </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link bi bi-cart-fill" style="color: white;" href="{{ url('pembayaran') }}"></a>
+                    </li>
+
                 </ul>
             </div>
         </div>
@@ -89,7 +98,6 @@
                     alt="...">
                 <div class="card-body text-start">
                     <p class="card-text m-0" style="text-decoration:underline;color:grey;">Ganti Foto Profile</p>
-
                 </div>
             </div>
 

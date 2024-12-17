@@ -85,9 +85,30 @@
                             style="color: white;text-decoration:underline;text-underline-offset:15px;"
                             href="{{ url('/') }}"><strong>Home</strong></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" style="color: white;" href="{{ url('login') }}"><strong>Login</strong></a>
-                    </li>
+                    @auth('user')
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: white;"
+                                href="{{ url('reservasi') }}"><strong>Reserve</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: white;" href="{{ url('menu') }}"><strong>Menu</strong></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: white;" href="{{ url('profile') }}"><i
+                                    class="bi bi-person-circle" style="border-bottom:1px;"></i></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link bi bi-cart-fill"
+                                style="color: white;display: inline-block; "
+                                href="{{ url('pembayaran') }}"></a>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: white;" href="{{ url('login') }}"><strong>Login</strong></a>
+                        </li>
+                    @endauth
                 </ul>
             </div>
         </div>
@@ -172,7 +193,6 @@
             </div>
         </div>
     </div>
-
     <!-- Main Footer -->
     <footer class="main-footer text-center" style="background-color: #F78405; color: #ffffff">
         <div class="row">

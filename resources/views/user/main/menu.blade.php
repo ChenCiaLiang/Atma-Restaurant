@@ -84,7 +84,7 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse text-center" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
                         <a class="nav-link active" style="color: white"
@@ -140,12 +140,13 @@
         </ul>
 
         <div class="grid-container">
+            @forelse ($menu as $item)
             <div class="grid-item">
                 <div class="card ">
-                    <img src="{{ asset('image/nasgor.png') }}" class="card-img-top" alt="...">
+                    <img src="{{ asset($item->gambar_makanan) }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Nasi Goreng</h5>
-                        <p class="card-text">Rp75.000</p>
+                        <h5 class="card-title">{{$item->nama}}</h5>
+                        <p class="card-text">Rp.{{$item->harga}}</p>
                         <div class="quantity-control d-flex align-items-center justify-content-center">
                             <button class="btn-decrement" style="border:none;background-color:white;">
                                 <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
@@ -158,101 +159,11 @@
                     </div>
                 </div>
             </div>
-
-            <div class="grid-item">
-                <div class="card">
-                    <img src="{{ asset('image/bibimbap.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Bibimbap</h5>
-                        <p class="card-text">Rp80.000</p>
-                        <div class="quantity-control d-flex align-items-center justify-content-center">
-                            <button class="btn-decrement" style="border:none;background-color:white;">
-                                <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
-                            </button>
-                            <span class="quantity mx-2" style="font-size:1.5vw;">0</span>
-                            <button class="btn-increment" style="border:none;background-color:white;">
-                                <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
-                            </button>
-                        </div>
-                    </div>
+            @empty
+                <div class="alert alert-danger">
+                    Data menu belum tersedia
                 </div>
-            </div>
-
-            <div class="grid-item">
-                <div class="card">
-                    <img src="{{ asset('image/hainan.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Hainan Rice</h5>
-                        <p class="card-text">Rp55.000</p>
-                        <div class="quantity-control d-flex align-items-center justify-content-center">
-                            <button class="btn-decrement" style="border:none;background-color:white;">
-                                <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
-                            </button>
-                            <span class="quantity mx-2" style="font-size:1.5vw;">0</span>
-                            <button class="btn-increment" style="border:none;background-color:white;">
-                                <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <div class="card">
-                    <img src="{{ asset('image/ramen.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Sauted Pork Ramen</h5>
-                        <p class="card-text">Rp70.000</p>
-                        <div class="quantity-control d-flex align-items-center justify-content-center">
-                            <button class="btn-decrement" style="border:none;background-color:white;">
-                                <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
-                            </button>
-                            <span class="quantity mx-2" style="font-size:1.5vw;">0</span>
-                            <button class="btn-increment" style="border:none;background-color:white;">
-                                <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <div class="card">
-                    <img src="{{ asset('image/japchae.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Japchae</h5>
-                        <p class="card-text">Rp.85.000</p>
-                        <div class="quantity-control d-flex align-items-center justify-content-center">
-                            <button class="btn-decrement" style="border:none;background-color:white;">
-                                <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
-                            </button>
-                            <span class="quantity mx-2" style="font-size:1.5vw;">0</span>
-                            <button class="btn-increment" style="border:none;background-color:white;">
-                                <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid-item">
-                <div class="card">
-                    <img src="{{ asset('image/mieayam.png') }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">Mie Ayam</h5>
-                        <p class="card-text">Rp50.000</p>
-                        <div class="quantity-control d-flex align-items-center justify-content-center">
-                            <button class="btn-decrement" style="border:none;background-color:white;">
-                                <i class="bi bi-dash-circle" style="font-size:1.5vw;"></i>
-                            </button>
-                            <span class="quantity mx-2" style="font-size:1.5vw;">0</span>
-                            <button class="btn-increment" style="border:none;background-color:white;">
-                                <i class="bi bi-plus-circle" style="font-size:1.5vw;"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforelse
         </div>
     </div>
     <!-- Main Footer -->

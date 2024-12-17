@@ -101,13 +101,13 @@
             <div class="card align-items-center" style="padding:5vh;border-radius:25px">
                 <h1 class="card-title">My Profile <a class="bi bi-pencil-square" href="{{ url('edit') }}"
                         style="color:black;"></a></h1>
-                <img src="{{ asset('image/shin.png') }}" class="rounded circle" style="width:15vw;height:30vh;"
+                <img src="{{ asset($user->foto)}}" class="card-img-top rounded-circle" style="width:15vw;height:30vh;"
                     alt="...">
                 <div class="card-body text-start">
-                    <h3 class="card-title text-center">User12345</h3>
-                    <p class="card-text m-0"><i class="bi bi-cake me-1"></i>October 1, 2000</p>
-                    <p class="card-text m-0"><i class="bi bi-envelope me-1"></i>email@gmail.com</p>
-                    <p class="card-text m-0"><i class="bi bi-telephone-fill me-1"></i>+62 123 456 789</p>
+                    <h3 class="card-title text-center">{{$user->username}}</h3>
+                    <p class="card-text m-0"><i class="bi bi-cake me-1"></i>{{ \Carbon\Carbon::parse($user->tgl_lahir)->format('F j, Y') }}</p>
+                    <p class="card-text m-0"><i class="bi bi-envelope me-1"></i>{{$user->email}}</p>
+                    <p class="card-text m-0"><i class="bi bi-telephone-fill me-1"></i>{{$user->no_telp}}</p>
                     <p style="border-top:1px solid black;text-align:center;margin-top:0.5rem;">Customer</p>
                 </div>
             </div>
@@ -135,11 +135,12 @@
                 </div>
             </div>
         </div>
-
-        <div class="item4 text-start">
-            <a type="button" class="btn btn-light" style="font-size:2rem;padding:15px;border-radius:30px;"
-                href="{{ url('login') }}">Logout <i class="bi bi-box-arrow-right"></i></a>
-        </div>
+        <form action="{{route('logout')}}" method="POST">
+            @csrf
+            <div class="item4 text-start">
+                <button type="submit" class="btn btn-light" style="font-size:2rem;padding:15px;border-radius:30px;">Logout <i class="bi bi-box-arrow-right"></i></button>
+            </div>
+        </form>
     </div>
 
     <!-- Main Footer -->
