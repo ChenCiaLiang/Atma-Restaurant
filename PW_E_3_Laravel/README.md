@@ -15,3 +15,8 @@
  - Login Admin:
     - Username: admin
     - Password: adminadmin
+
+### Bonus yang diambil:
+
+ - Hosting:
+   - Backend: http://atmarestaurant.lapaklumine.my.id/
