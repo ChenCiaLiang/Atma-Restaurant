@@ -117,7 +117,7 @@ class UserController extends Controller
             if($fotoLama != 'user_profile/default.jpeg'){
                 File::delete(public_path($fotoLama));
             }
-            $file = $request->file('foto');
+            $file = $request->file('foto'); 
             $fileName = time() . '_' . $file->getClientOriginalName();
             $file->move(public_path('user_profile'), $fileName);
             $fotoPath = 'user_profile/' . $fileName;
