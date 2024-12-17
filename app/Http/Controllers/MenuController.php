@@ -128,7 +128,7 @@ class MenuController extends Controller
                 'jenis' => $request->jenis,
                 'jumlah_menu' => 0,
             ]);
-            return redirect()->route('admin_menu')->with('success', 'Berhasil membuat menu');
+            return redirect()->route('admin_menu')->with('success', 'Berhasil mengupdate menu');
         }
     }
 

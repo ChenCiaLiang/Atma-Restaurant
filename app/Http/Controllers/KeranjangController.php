@@ -75,6 +75,16 @@ class KeranjangController extends Controller
             $keranjang->delete();
             return redirect()->route('pembayaran')->with('success', 'Menu berhasil dihapus dari keranjang');
         }
+    }
+
+    public function deleteAll()
+    {
+        $user = auth('user')->user();
+        $keranjang = Keranjang::where('id_user', $user->id_user)->where('status', 'OnGoing')->get();
+        foreach ($keranjang as $item) {
+            $item->delete();
+        }
+        return redirect()->route('pembayaran')->with('success', 'Semua menu berhasil dihapus dari keranjang');
         
     }
 }

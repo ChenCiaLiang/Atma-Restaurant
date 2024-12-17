@@ -112,6 +112,7 @@ Route::middleware(['auth:user'])->group(function () {
     })->name('pembayaran');
 
     Route::delete('deleteKeranjang/{id_keranjang}', [KeranjangController::class, 'delete'])->name('keranjang.delete');
+    Route::delete('deleteKeranjangAll', [KeranjangController::class, 'deleteAll'])->name('keranjang.deleteAll');
     //---------------------------------------------------------------------------------------------------------------------------------
 
 

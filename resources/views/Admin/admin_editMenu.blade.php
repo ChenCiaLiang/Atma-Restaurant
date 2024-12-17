@@ -38,7 +38,6 @@
 
     <main class="p-3">
         <div class="container-fluid p-4 pt-0" id="mainContent">
-            <!-- Tambah Menu -->
             <div class="row mt-4 d-flex justify-content-center">
                 <div class="col-8">
                     <div class="card container-fluid" style="background-color: #F2D55F">
@@ -63,26 +62,31 @@
                                     <div class="mx-3">
                                         <p class="m-0" style="padding-left:1vw;">Nama Menu</p>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="namaMenu" name="nama" style="padding-left:2.2rem;"
+                                            <input type="text" class="form-control" id="namaMenu" name="nama" style="padding-left:2.2rem;" value="{{$menu->nama}}"
                                                 placeholder="Nama Menu" required>
                                             <label for="namaMenu" style="padding-left:2vw;">Nama Menu</label>
                                         </div>
 
                                         <p style="padding-left:1vw;margin:0;margin-top:2vh;">Harga</p>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="harga" placeholder="Harga" name="harga" style="padding-left:2.2rem;"required>
+                                            <input type="text" class="form-control" id="harga" placeholder="Harga" name="harga" style="padding-left:2.2rem;" value ="{{$menu->harga}}">
                                             <label for="harga" style="padding-left:2vw;">Harga</label>
                                         </div>
                                         
                                         <p style="padding-left:1vw;margin:0;margin-top:2vh;">Jenis</p>
                                         <div class="form-floating">
-                                            <input type="text" class="form-control" id="jenis" placeholder="Jenis Menu" name="jenis" style="padding-left:2.2rem;"required>
-                                            <label for="jenis" style="padding-left:2vw;">Jenis Menu</label>
+                                        <select class="form-select" name="jenis" required style="border-radius:20px; padding:0; margin:0; padding-left:2.2rem;">
+                                            <option value="" disabled>Pilih Jenis</option>
+                                            <option value="Noodle" <?= ($menu->jenis == 'Noodle') ? 'selected' : '' ?>>Noodle</option>
+                                            <option value="Rice" <?= ($menu->jenis == 'Rice') ? 'selected' : '' ?>>Rice</option>
+                                            <option value="Drink" <?= ($menu->jenis == 'Drink') ? 'selected' : '' ?>>Drink</option>
+                                        </select>
+
                                         </div>
                                         
                                         <p style="padding-left:1vw;margin:0;margin-top:2vh;">Gambar</p>
                                         <div class="form-floating-fluid">
-                                            <input type="file" class="form-control" id="gambar" placeholder="Gambar" name="gambar_makanan">
+                                            <input type="file" class="form-control" id="gambar" placeholder="Gambar" name="gambar_makanan" >
                                         </div>
                                     </div>
 

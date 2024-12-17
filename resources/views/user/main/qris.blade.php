@@ -58,10 +58,6 @@
       <div class="card" style="width: auto;border:none;">
         <div class="card-body" style="background-color:#F0DAA1;">
           <div class="d-flex justify-content-between">
-            <p class="card-text" style="margin:0;"><strong>Kode Pesanan :</strong></p>
-            <p class="card-text" style="margin:0;"><strong>A24</strong></p>
-          </div>
-          <div class="d-flex justify-content-between">
             <p class="card-text" style="margin:0;"><strong>Status Pembayaran : </strong></p>
             <p class="card-text" style="margin:0;"><strong>Belum Dibayar</strong></p>
           </div>

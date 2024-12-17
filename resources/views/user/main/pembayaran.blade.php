@@ -123,9 +123,13 @@
     <div class="container " style="padding:2px;justify-content:center;">
         <div class="grid-container justify-content-center">
             <div style="padding:3%;">
-                <div class="row align-items-center">
+                <div class="d-flex justify-content-between">
                     <p class="col text-start" style="font-size:1.5vw;"><strong>Your Order</strong></p>
-                    <p class="col text-end" style="font-size:1.5vw;margin-right:1.5vw;"><strong>Remove All</strong></p>
+                    <form action="{{route('keranjang.deleteAll')}}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="col text-end" style="font-size:1.5vw;background-color:transparent;border:0;color:white" @if($keranjangs->isEmpty()) disabled @endif><strong>Remove All</strong></button>
+                    </form>
                 </div>
                     @forelse($keranjangs as $item)
                     <div class="card mb-3" >
@@ -141,7 +145,7 @@
                                         <form action="{{route('keranjang.delete', $item->id_keranjang)}}" method ="POST">
                                             @csrf
                                             @method('delete')
-                                            <button type="submit"class="bi bi-x-circle" style="font-size:2vw;color:red;background-color:transparent;border:0"></button>
+                                            <button type="submit"class="bi bi-x-circle" style="font-size:2vw;color:red;background-color:transparent;border:0" ></button>
                                         </form>
                                     </div>
                                     
@@ -157,8 +161,6 @@
             </div>
 
             <div style="padding:3%;">
-                <p style="text-align:center;font-size:1.5vw;"><strong>Meja No.14</strong></p>
-                    
                     <div class="card" style="width: 30vw;">
                         <div class="card-body">
                             <h5 class="card-title text-start" style="font-size:1vw;"><strong>Pesanan</strong></h5>

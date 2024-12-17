@@ -166,7 +166,6 @@
                                 </div>
                             </div>
                         </div>
-
                     @empty
                         <div class="card-body " style="padding-left:20vw;padding-right:20vw;height:14.5rem;">
                             <p class="card-text text-center" style="font-size:3vw;color:grey;"><i
