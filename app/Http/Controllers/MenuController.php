@@ -50,6 +50,17 @@ class MenuController extends Controller
         return view('Admin.admin_editMenu', compact('menu'));
     }
 
+    public function find(Request $request)
+    {
+        $request->validate([
+            'search' => 'required|string|max:255',
+        ]);
+
+        $menu = Menu::where('nama', 'like', '%' . $request->search . '%')->get();
+        
+        return view('/user/main/menu', compact('menu'));
+    }
+
     public function store(Request $request)
     {
         $jenis = ['Rice', 'Noodle', 'Drink'];

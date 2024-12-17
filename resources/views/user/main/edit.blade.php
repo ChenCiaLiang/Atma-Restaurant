@@ -85,7 +85,6 @@
                     <li class="nav-item">
                         <a class="nav-link bi bi-cart-fill" style="color: white;" href="{{ url('pembayaran') }}"></a>
                     </li>
-
                 </ul>
             </div>
         </div>
@@ -98,12 +97,15 @@
                 <div class="card align-items-center"
                     style="padding:5vh;border-radius:25px;background-color:#F0DAA1;color:white;border:none;">
                     <h1 class="card-title">Edit Profile</h1>
-                    <img src="{{ asset($user->foto) }}" class="rounded-circle" style="width:15vw;height:30vh;"
-                        alt="...">
+                    <img id="imagePreview" src="{{ asset($user->foto ?? 'user_profile/default.jpeg') }}" class="rounded-circle"
+                        style="width:15vw;height:30vh;" alt="...">
 
                     <div class="card-body text-start">
-                        <input type="file" name='foto'>
-                        <p class="card-text m-0" style="text-decoration:underline;color:grey;">Ganti Foto Profile</p>
+                        <label for="fotoInput" class="btn btn-warning" style="cursor: pointer;">
+                            Upload New Photo
+                        </label>
+                        <input type="file" name="foto" id="fotoInput" onchange="previewFile()" accept="image/*"
+                            style="display: none;">
                     </div>
                 </div>
 
@@ -188,7 +190,21 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function previewFile() {
+            const file = document.getElementById('fotoInput').files[0];
+            const imagePreview = document.getElementById('imagePreview');
 
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function(event) {
+                    imagePreview.src = event.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 </body>
 
 </html>

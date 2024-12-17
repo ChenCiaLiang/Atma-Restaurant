@@ -61,6 +61,7 @@ Route::middleware(['auth:user'])->group(function () {
 
     Route::get('menu', [MenuController::class, 'indexUser'])->name('menu');
     Route::get('menu/{jenis}', [MenuController::class, 'showMenu']);
+    Route::post('menu', [MenuController::class, 'find'])->name('menu.search');
 
     Route::get('pembayaran/user', [PembayaranController::class, 'indexUser']);
     Route::get('pembayaran/admin', [PembayaranController::class, 'indexAdmin']);

@@ -168,9 +168,10 @@
     <div class="container " style="text-align:center;padding:5%;">
         <h3 style="color:white;font-family:Italianno;color:black;font-size:3vw;">Atmarestaurant Menu</h3>
 
-        <form class="d-flex" role="search" style="margin-top:5%;justify-content:center;">
+        <form class="d-flex" role="search" action="{{ route('menu.search') }}" method="POST" style="margin-top:5%;justify-content:center;">
+            @csrf
             <div class="position-relative">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search"
                     style="border-radius: 25px; padding-left: 30px;width:50vw;">
                 <span class="position-absolute"
                     style="left: 10px; top: 50%; transform: translateY(-50%); pointer-events: none;">
