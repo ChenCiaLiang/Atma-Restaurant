@@ -109,10 +109,13 @@ class UserController extends Controller
             'no_telp' => 'required|string|max:15',
             'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
+
+        
         
         if ($request->hasFile('foto') && $request->file('foto')->isValid()) {
-            if (!is_null($user->foto) && File::exists(public_path('user_profile/' . $user->foto))) {
-                File::delete(public_path('user_profile/' . $user->foto));
+            $fotoLama = $user->foto;
+            if($fotoLama != 'user_profile/default.jpeg'){
+                File::delete(public_path($fotoLama));
             }
             $file = $request->file('foto');
             $fileName = time() . '_' . $file->getClientOriginalName();

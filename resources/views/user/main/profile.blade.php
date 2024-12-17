@@ -116,8 +116,7 @@
             <div class="card align-items-center" style="padding:5vh;border-radius:25px">
                 <h1 class="card-title">My Profile <a class="bi bi-pencil-square" href="{{ route('user.edit', $user->id_user) }}"
                         style="color:black;"></a></h1>  
-                <img src="{{ asset($user->foto) }}" class="card-img-top rounded-circle"
-                    style="min-width:15rem;max-width:15rem" alt="...">
+                <img src="{{ asset($user->foto) }}" class="card-img-top rounded-circle" style="max-width:15rem;min-height:15rem;min-width:15rem;max-height:15rem;" alt="...">
                 <div class="card-body text-start">
                     <h3 class="card-title text-center">{{ $user->username }}</h3>
                     <p class="card-text m-0">
