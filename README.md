@@ -1,22 +1,45 @@
-## Kelas E Kelompok 3
+# Atma Restaurant – Web-Based Reservation & Ordering System
 
-### Anggota Kelompok:
+Atma Restaurant is a web-based application for managing restaurant reservations, menu ordering, and basic payment simulation consisting of:
 
-- Christopher William (220711839) - backend & frontend
-- Kalvin Lawinata (220711659) - backend & frontend
-- Jeany Florencia (220712030) - design & support
-- Keefe Melvern (220711887) - design & backend
+- **PHP/Laravel Backend - Frontend** (`AtmaRestaurant`)
+- **Database Schema & SQL Dump** (`AtmaRestaurant.sql`)
 
-### Username & Password Login:
+---
 
- - Login User:
-    - Username: tes
-    - Password: 123
- - Login Admin:
-    - Username: admin
-    - Password: adminadmin
+## **🤝 Contributor**
+- [Christopher William](https://github.com/ChenCiaLiang)
+- [Kalvin Lawinata](https://github.com/KalvinLawinata)
+- [Jeany Florencia](https://github.com/r8bbers)
+- [Keefe Melvern](https://github.com/Keefe248)
 
-### Bonus yang diambil:
+## ✨ Main Features
+### 👤 User (Customer)
+- Register and log in
+- View and edit profile
+- Make table reservations
+- Browse and search menu items
+- Add menu items to cart
+- Place orders and simulate payments (QRIS / Virtual Account)
+- View order and payment history
 
- - Hosting:
-   - Backend & Frontend: http://atmarestaurant.lapaklumine.my.id/ 
+### 🛠 Admin
+- Admin login
+- View dashboard summary
+- Manage menu (add, edit, delete)
+- Manage users (view, delete)
+- View all payments and orders
+- Edit admin profile
+
+
+## 🧱 **Tech Stack**
+- **Backend Framework:** Laravel (PHP)
+- **Templating:** Blade
+- **Language:** PHP, Blade, a bit of JavaScript
+- **Database:** MySQL (via `AtmaRestaurant.sql`)
+- **Auth:**
+   - Multi-auth with `user` and `admin` guards
+
+## **📄 License**
+This project is intended for educational and academic purposes.
+You may modify and extend it for your own learning or assignments.
